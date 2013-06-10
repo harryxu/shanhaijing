@@ -7,6 +7,23 @@
     {{ HTML::style('vendor/Flat-UI/css/flat-ui.css') }}
   </head>
   <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right">
+              <?php if (Sentry::check()): ?>
+                <li><?php echo HTML::link('account/logout', 'Logout'); ?></li>
+              <?php else: ?>
+                <li><?php echo HTML::link('account/login', 'Login'); ?></li>
+                <li><?php echo HTML::link('account/register', 'Register'); ?></li>
+              <?php endif; ?>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="container">
       @yield('content')
     </div>
