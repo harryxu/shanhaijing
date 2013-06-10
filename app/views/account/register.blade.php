@@ -1,5 +1,7 @@
-{{ Form::open(array('class' => 'form-horizontal')) }}
+@extends('layouts.master')
 
+@section('content')
+{{ Form::open(array('class' => 'form-horizontal')) }}
 <div class="control-group">
   <label class="control-label" for="inputEmail">Email</label>
   <div class="controls">
@@ -24,5 +26,5 @@
 <div class="form-actions">
   <button type="submit" class="btn btn-primary">Register</button>
 </div>
-
 {{ Form::close() }}
+@stop
