@@ -5,12 +5,16 @@
     <title>shj</title>
     {{ HTML::style('vendor/bootstrap/css/bootstrap.min.css') }}
     {{ HTML::style('vendor/Flat-UI/css/flat-ui.css') }}
+    {{ HTML::style('css/style.css') }}
   </head>
   <body>
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
           <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><?php echo link_to('/', '山海经'); ?></li>
+            </ul>
             <ul class="nav pull-right">
               <?php if (Sentry::check()): ?>
                 <li><?php echo HTML::link('account/logout', 'Logout'); ?></li>

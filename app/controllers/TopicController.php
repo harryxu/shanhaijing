@@ -14,7 +14,10 @@ class TopicController extends BaseController
 
     public function topicList()
     {
-        return View::make('topic/list');
+        $topics = Topic::orderBy('created_at', 'DESC')->get();
+        return View::make('topic/list', array(
+            'topics' => $topics,
+        ));
     }
 
     public function getCreate()
@@ -42,9 +45,12 @@ class TopicController extends BaseController
         return Redirect::to('t/'.$topic->id);
     }
 
-    public function view()
+    public function getView($id)
     {
-        
+        $topic = Topic::find($id);
+        return View::make('topic/view', array(
+            'topic' => $topic,
+        ));
     }
 }
 
