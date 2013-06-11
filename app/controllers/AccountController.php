@@ -33,7 +33,7 @@ class AccountController extends BaseController
 
             // Try to authenticate the user
             $user = Sentry::authenticate($credentials, false);
-            return Redirect::to('/');
+            return Redirect::intended('/');
         }
         catch (Cartalyst\Sentry\Users\UserNotActivatedException $e) {
             echo 'User is not activated.';
@@ -44,6 +44,12 @@ class AccountController extends BaseController
                 ->with('login_error', true);
         }
 
+    }
+
+    public function getLogout()
+    {
+        Sentry::logout();
+        return Redirect::to('/');
     }
 }
 
