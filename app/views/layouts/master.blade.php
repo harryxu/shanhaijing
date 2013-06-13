@@ -12,15 +12,14 @@
       <div class="navbar-inner">
         <div class="container">
           <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li><?php echo link_to('/', '山海经'); ?></li>
-            </ul>
+            <?php echo link_to('/', '山海经', array('class' => 'brand')); ?>
             <ul class="nav pull-right">
               <?php if (Sentry::check()): ?>
-                <li><?php echo HTML::link('account/logout', 'Logout'); ?></li>
+                <li><?php echo link_to('user/'.Sentry::getUser()->username, Sentry::getUser()->username); ?></li>
+                <li><?php echo link_to('account/logout', 'Logout'); ?></li>
               <?php else: ?>
-                <li><?php echo HTML::link('account/login', 'Login'); ?></li>
-                <li><?php echo HTML::link('account/register', 'Register'); ?></li>
+                <li><?php echo link_to('account/login', 'Login'); ?></li>
+                <li><?php echo link_to('account/register', 'Register'); ?></li>
               <?php endif; ?>
             </ul>
           </div>

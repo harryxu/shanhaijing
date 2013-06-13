@@ -10,9 +10,9 @@
 </div>
 <?php endif;  ?>
 <div class="control-group">
-  <label class="control-label" for="inputEmail">Email</label>
+  <label class="control-label" for="inputEmail">Username or Email</label>
   <div class="controls">
-    <?php echo Form::text('email');  ?>
+    <?php echo Form::text('login');  ?>
   </div>
 </div>
 
