@@ -9,12 +9,12 @@ class TopicController extends BaseController
     public function __construct()
     {
         $this->beforeFilter('login_required', array('only' => array(
-            'getCreate', 'postCreate')));
+            'getCreate', 'postCreate', 'postReply')));
     }
 
     public function topicList()
     {
-        $topics = Topic::orderBy('created_at', 'DESC')->get();
+        $topics = Topic::orderBy('updated_at', 'DESC')->get();
         return View::make('topic/list', array(
             'topics' => $topics,
         ));
@@ -45,12 +45,33 @@ class TopicController extends BaseController
         return Redirect::to('t/'.$topic->id);
     }
 
+    /**
+     * Topic view page.
+     */
     public function getView($id)
     {
         $topic = Topic::find($id);
         return View::make('topic/view', array(
             'topic' => $topic,
         ));
+    }
+
+    /**
+     * Post a new reply to a topic.
+     */
+    public function postReply()
+    {
+        $topic = Topic::find(Input::get('topic_id'));
+
+        $post = Post::create(array(
+            'body' => Input::get('body'),
+        ));
+        $post->user_id = Sentry::getUser()->id;
+        $post->topic_id = $topic->id;
+        $post->save();
+        $topic->touch();
+
+        return Redirect::to('t/' . $topic->id . '#' . $post->id);
     }
 }
 
