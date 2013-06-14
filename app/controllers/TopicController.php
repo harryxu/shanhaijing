@@ -71,7 +71,7 @@ class TopicController extends BaseController
         $post->save();
         $topic->touch();
 
-        return Redirect::to('t/' . $topic->id . '#' . $post->id);
+        return Redirect::to('t/' . $topic->id . '#post-' . $post->id);
     }
 }
 
