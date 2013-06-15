@@ -1,3 +1,11 @@
 .topic-list-wrapper .list-tools {
-  padding-bottom: 15px;
-}
+  padding-bottom: 15px; }
+
+.topic .posts {
+  margin-bottom: 20px; }
+  .topic .posts .post {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #CCC; }
+    .topic .posts .post .avatar {
+      text-align: center; }

@@ -5,6 +5,8 @@ use Cartalyst\Sentry\Users\UserNotFoundException;
 
 class Provider extends SentryUserProvider {
 
+    protected $model = 'Shanhaijing\Shjsentry\Users\Eloquent\User';
+
     public function findByEmail($email)
     {
         $model = $this->createModel();
