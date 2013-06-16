@@ -23,6 +23,14 @@
   </div>
 </div>
 
+<div class="control-group">
+  <div class="controls">
+    <label class="checkbox">
+      <input name="remember" type="checkbox"> Remember me
+    </label>
+  </div>
+</div>
+
 <div class="form-actions">
   <button type="submit" class="btn btn-primary">Login</button>
 </div>

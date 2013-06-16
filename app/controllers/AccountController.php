@@ -35,7 +35,10 @@ class AccountController extends BaseController
         }
         try {
             // Try to authenticate the user
-            $user = Sentry::authenticate($credentials, false);
+            $user = Input::has('remember')
+                ? Sentry::authenticateAndRemember($credentials)
+                : Sentry::authenticate($credentials, false);
+
             return Redirect::intended('/');
         }
         catch (Cartalyst\Sentry\Users\UserNotActivatedException $e) {
