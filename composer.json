@@ -4,7 +4,8 @@
     "keywords": ["forum", "bbs"],
     "require": {
         "laravel/framework": "4.0.*",
-        "cartalyst/sentry": "2.0.*"
+        "cartalyst/sentry": "2.0.*",
+        "dflydev/markdown": "dev-master"
     },
     "autoload": {
         "classmap": [
@@ -14,7 +15,13 @@
             "app/database/migrations",
             "app/database/seeds",
             "app/tests/TestCase.php"
-        ]
+        ],
+        "files": [
+            "app/src/Shanhaijing/Support/helpers.php"
+        ],
+        "psr-0": {
+            "Shanhaijing": "app/src"
+        }
     },
     "scripts": {
         "pre-update-cmd": [

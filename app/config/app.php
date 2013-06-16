@@ -115,6 +115,7 @@ return array(
         'Illuminate\Workbench\WorkbenchServiceProvider',
 
         'Shanhaijing\Shjsentry\ShjsentryServiceProvider',
+        'Shanhaijing\Markdown\MarkdownServiceProvider',
 
     ),
 

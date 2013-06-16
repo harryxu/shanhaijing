@@ -17,7 +17,7 @@
                   <strong><?php echo $post->user->username; ?></strong>
                 </a>
               </div>
-              <?php echo $post->body; ?>
+              <?php echo markdown($post->body); ?>
             </div>
           </div>
         </div>
