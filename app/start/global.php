@@ -81,3 +81,12 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+
+App::singleton('htmlpurifier', function()
+{
+    $config = HTMLPurifier_Config::createDefault();
+    $config->set('Cache.SerializerPath', storage_path(). '/cache');
+    $config->set('Core.EscapeInvalidTags', true);
+    return new HTMLPurifier($config);
+});

@@ -8,7 +8,7 @@
     {{ HTML::style('css/style.css') }}
   </head>
   <body>
-    <div class="navbar">
+    <div class="navbar navbar-static-top">
       <div class="navbar-inner">
         <div class="container">
           <div class="nav-collapse collapse">
@@ -27,7 +27,7 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="page-content container">
       @yield('content')
     </div>
   </body>
