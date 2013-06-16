@@ -30,5 +30,9 @@
     <div class="page-content container">
       @yield('content')
     </div>
+
+    @section('scripts')
+      <?php echo HTML::script('vendor/jquery/jquery-1.10.1.min.js'); ?>
+    @show
   </body>
 </html>
