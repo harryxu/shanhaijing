@@ -1,5 +1,10 @@
 @extends('layouts.master')
 
+@section('vendor-styles')
+  @parent
+  {{ HTML::style('vendor/pagedown/pagedown.css') }}
+@stop
+
 @section('content')
 <div class="topic">
   <h1><?php echo $topic->title; ?></h1>
@@ -30,11 +35,31 @@
     <h3>Reply</h3>
     <input type="hidden" name="topic_id" value="<?php echo $topic->id; ?>" />
     <div class="controls">
-      <?php echo Form::textarea('body', '', array('class' => 'span')); ?>
+      <div class="wmd-panel">
+        <div id="wmd-button-bar"></div>
+        <?php echo Form::textarea('body', '', array(
+          'placeholder' => 'Type topic body here.', 
+          'class' => 'span', 
+          'id' => 'wmd-input')); ?>
+      </div>
     </div>
     
     <button type="submit" class="btn btn-primary">Reply</button>
   <?php echo Form::close(); ?>
+
+  @section('scripts')
+    @parent
+    <?php echo HTML::script('vendor/pagedown/Markdown.Converter.js'); ?>
+    <?php echo HTML::script('vendor/pagedown/Markdown.Sanitizer.js'); ?>
+    <?php echo HTML::script('vendor/pagedown/Markdown.Editor.js'); ?>
+    <script type="text/javascript">
+    (function() {
+      var converter = Markdown.getSanitizingConverter();
+      var editor = new Markdown.Editor(converter);
+      editor.run();
+    })();
+    </script>
+  @stop
   <?php endif; ?>
 </div>
 

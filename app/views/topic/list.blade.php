@@ -19,7 +19,7 @@
       <?php foreach ($topics as $topic): ?>
         <tr>
           <td><?php echo link_to('t/' . $topic->id, $topic->title); ?></td>
-          <td><?php echo $topic->user->email; ?></td>
+          <td><?php echo $topic->user->username; ?></td>
         </tr>
       <?php endforeach; ?>
     </tbody>
