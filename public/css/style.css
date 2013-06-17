@@ -15,3 +15,13 @@
     border-bottom: 1px solid #CCC; }
     .topic .posts .post .avatar {
       text-align: center; }
+    .topic .posts .post .post-header {
+      padding-bottom: 10px; }
+      .topic .posts .post .post-header .time {
+        float: right; }
+        .topic .posts .post .post-header .time a {
+          color: #AAAAAA;
+          text-decoration: none;
+          font-size: 0.9em; }
+          .topic .posts .post .post-header .time a:hover {
+            text-decoration: underline; }
