@@ -14,7 +14,7 @@ class TopicController extends BaseController
 
     public function topicList()
     {
-        $topics = Topic::orderBy('updated_at', 'DESC')->get();
+        $topics = Topic::orderBy('last_post_at', 'DESC')->get();
         return View::make('topic/list', array(
             'topics' => $topics,
         ));
@@ -31,6 +31,7 @@ class TopicController extends BaseController
         $topic = new Topic();
         $topic->user_id = $user->id;
         $topic->title = Input::get('title');
+        $topic->last_post_at = $topic->freshTimestamp();
         $topic->save();
 
         $post = new Post();
@@ -69,7 +70,8 @@ class TopicController extends BaseController
         $post->user_id = Sentry::getUser()->id;
         $post->topic_id = $topic->id;
         $post->save();
-        $topic->touch();
+        $topic->last_post_at = $topic->freshTimestamp();
+        $topic->save();
 
         return Redirect::to('t/' . $topic->id . '#post-' . $post->id);
     }
