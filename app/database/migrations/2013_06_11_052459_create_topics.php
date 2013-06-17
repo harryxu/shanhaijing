@@ -11,7 +11,7 @@ class CreateTopics extends Migration {
      */
     public function up()
     {
-        Schema::create('topics', function($table) 
+        Schema::create('topics', function($table)
         {
             $table->increments('id');
             $table->string('title');
