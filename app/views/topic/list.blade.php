@@ -13,13 +13,18 @@
       <tr>
         <th>Topic</th>
         <th>Author</th>
+        <th>Posts</th>
       </tr>
     </thead>
     <tbody>
       <?php foreach ($topics as $topic): ?>
         <tr>
-          <td><?php echo link_to('t/' . $topic->id, $topic->title); ?></td>
+          <td>
+            <img src="<?php echo $topic->user->getAvatar(20); ?>" alt="" />
+            <?php echo link_to('t/' . $topic->id, $topic->title); ?>
+          </td>
           <td><?php echo $topic->user->username; ?></td>
+          <td><?php echo $topic->posts_count; ?></td>
         </tr>
       <?php endforeach; ?>
     </tbody>

@@ -32,6 +32,7 @@ class TopicController extends BaseController
         $topic->user_id = $user->id;
         $topic->title = Input::get('title');
         $topic->last_post_at = $topic->freshTimestamp();
+        $topic->posts_count = 1;
         $topic->save();
 
         $post = new Post();
@@ -71,6 +72,7 @@ class TopicController extends BaseController
         $post->topic_id = $topic->id;
         $post->save();
         $topic->last_post_at = $topic->freshTimestamp();
+        $topic->posts_count += 1;
         $topic->save();
 
         return Redirect::to('t/' . $topic->id . '#post-' . $post->id);
