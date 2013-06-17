@@ -33,6 +33,13 @@
     <div class="page-content container">
       @yield('content')
     </div>
+    <footer class="footer">
+      <div class="container">
+        <p>Shanhaijing is a opensource forum appliaction.</p>
+        <p>The source code is hosted on <a href="https://github.com/harryxu/shanhaijing" target="_blank">github</a>.</p>
+        <p>Sponsored by <a href="http://bigecko.com" target="_blank">bigecko.com</a></p>
+      </div>
+    </footer>
 
     @section('scripts')
       <?php echo HTML::script('vendor/jquery/jquery-1.10.1.min.js'); ?>
