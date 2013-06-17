@@ -17,7 +17,11 @@ class CreateTopics extends Migration {
             $table->string('title');
             $table->integer('user_id');
             $table->integer('first_post_id');
-            $table->timestamps();
+            $table->integer('posts_count')->default(0);
+            $table->integer('favorite_count')->default(0);
+            $table->datetime('created_at');
+            $table->datetime('updated_at');
+            $table->datetime('last_post_at');
         });
     }
 

@@ -18,7 +18,8 @@ class CreatePosts extends Migration {
             $table->integer('topic_id');
             $table->text('body');
             $table->integer('type')->default(1);
-            $table->timestamps();
+            $table->datetime('created_at');
+            $table->datetime('updated_at');
 
             $table->index(array('topic_id', 'type', 'created_at'));
         });
