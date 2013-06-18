@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title')<?php echo $topic->title; ?> - @parent @stop
+
 @section('vendor-styles')
   @parent
   {{ HTML::style('vendor/pagedown/pagedown.css') }}

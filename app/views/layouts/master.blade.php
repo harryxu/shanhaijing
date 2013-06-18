@@ -3,7 +3,8 @@
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <title>shj</title>
+    <title>@section('title') 
+{{ Variable::get('sitename') }}@show</title>
     @section('vendor-styles')
       {{ HTML::style('vendor/bootstrap/css/bootstrap.min.css') }}
       {{ HTML::style('vendor/Flat-UI/css/flat-ui.css') }}

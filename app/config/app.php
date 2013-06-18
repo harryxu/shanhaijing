@@ -116,6 +116,7 @@ return array(
 
         'Shanhaijing\Shjsentry\ShjsentryServiceProvider',
         'Shanhaijing\Markdown\MarkdownServiceProvider',
+        'Shanhaijing\Variable\VariableServiceProvider',
 
     ),
 
@@ -183,6 +184,7 @@ return array(
         'View'            => 'Illuminate\Support\Facades\View',
 
         'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
+        'Variable'        => 'Shanhaijing\Support\Facades\Variable',
 
     ),
 

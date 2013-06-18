@@ -50,6 +50,13 @@ Route::filter('login_required', function() {
     }
 });
 
+Route::filter('can', function($permission) {
+    $user = Sentry::getUser();
+    if (!$user->hasAccess($permission)) {
+        
+    }
+});
+
 /*
 |--------------------------------------------------------------------------
 | Guest Filter

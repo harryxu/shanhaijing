@@ -7,3 +7,6 @@ Route::controller('account', 'AccountController');
 // Topic
 Route::get('t/{id}', 'TopicController@getView');
 Route::controller('topic', 'TopicController');
+
+// admin
+Route::controller('admin/settings', 'SiteSettingsController');

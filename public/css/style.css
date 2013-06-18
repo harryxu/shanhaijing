@@ -25,3 +25,8 @@
           font-size: 0.9em; }
           .topic .posts .post .post-header .time a:hover {
             text-decoration: underline; }
+
+footer {
+  padding: 20px 0; }
+  footer a {
+    font-weight: normal; }
