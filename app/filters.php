@@ -50,10 +50,10 @@ Route::filter('login_required', function() {
     }
 });
 
-Route::filter('can', function($permission) {
+Route::filter('can', function($route, $request, $response) {
     $user = Sentry::getUser();
-    if (!$user->hasAccess($permission)) {
-        
+    if (!$user->hasAccess($response)) {
+        App::abort(403, 'Forbidden.');
     }
 });
 

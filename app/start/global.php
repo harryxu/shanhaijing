@@ -50,7 +50,12 @@ Log::useDailyFiles(storage_path().'/logs/'.$logFile);
 
 App::error(function(Exception $exception, $code)
 {
-	Log::error($exception);
+    Log::error($exception);
+
+    if (in_array($code, array(403))) {
+        $message = $code . ': ' . $exception->getMessage();
+        return Response::make($message, $code);
+    }
 });
 
 /*
