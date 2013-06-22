@@ -9,6 +9,7 @@
 
 @section('content')
 <div class="topic">
+  <section>
   <h1><?php echo $topic->title; ?></h1>
   <div class="posts">
     <?php foreach ($topic->posts() as $post): ?>
@@ -34,8 +35,10 @@
       </div>
     <?php endforeach; ?>
   </div>
+  </section>
 
   <?php if (Sentry::check()): ?> 
+  <section class="reply-form">
   <?php echo Form::open(array('url' => 'topic/reply', 'class' => 'topic-reply')); ?>
     <h3>Reply</h3>
     <input type="hidden" name="topic_id" value="<?php echo $topic->id; ?>" />
@@ -44,13 +47,14 @@
         <div id="wmd-button-bar"></div>
         <?php echo Form::textarea('body', '', array(
           'placeholder' => 'Type topic body here.', 
-          'class' => 'span', 
+          'class' => 'span9', 
           'id' => 'wmd-input')); ?>
       </div>
     </div>
     
     <button type="submit" class="btn btn-primary">Reply</button>
   <?php echo Form::close(); ?>
+  </section>
 
   @section('scripts')
     @parent

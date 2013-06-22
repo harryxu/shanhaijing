@@ -3,11 +3,12 @@
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@section('title') 
 {{ Variable::get('sitename') }}@show</title>
     @section('vendor-styles')
-      {{ HTML::style('vendor/bootstrap/css/bootstrap.min.css') }}
-      {{ HTML::style('vendor/Flat-UI/css/flat-ui.css') }}
+      {{ HTML::style('vendor/bootstrap/css/bootstrap.css') }}
+      {{ HTML::style('vendor/bootplus/css/bootplus.css') }}
     @show
     {{ HTML::style('css/style.css') }}
   </head>
@@ -44,6 +45,7 @@
 
     @section('scripts')
       <?php echo HTML::script('vendor/jquery/jquery-1.10.1.min.js'); ?>
+      <?php echo HTML::script('vendor/bootstrap/js/bootstrap.min.js'); ?>
     @show
   </body>
 </html>

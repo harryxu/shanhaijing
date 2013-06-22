@@ -4,10 +4,11 @@
 <div class="topic-list-wrapper">
   <div class="list-tools">
   <a class="btn btn-default" href="<?php echo url('topic/create'); ?>">
-    <i class="icon-plus icon-white"></i> Create Topic
+    <i class="icon-plus"></i> Create Topic
   </a>
   </div>
 
+  <section>
   <table class="table table-bordered table-hover topic-list">
     <thead>
       <tr>
@@ -29,6 +30,7 @@
       <?php endforeach; ?>
     </tbody>
   </table>
+  </section>
 </div>
 
 @stop

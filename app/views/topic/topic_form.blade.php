@@ -6,6 +6,7 @@
 @stop
 
 @section('content')
+<section>
 <h1>Create Topic</h1>
 <?php echo Form::open(array()); ?>
   <div class="controls">
@@ -15,7 +16,7 @@
       <div id="wmd-button-bar"></div>
       <?php echo Form::textarea('body', '', array(
         'placeholder' => 'Type topic body here.', 
-        'class' => 'span', 
+        'class' => 'span9', 
         'id' => 'wmd-input')); ?>
     </div>
   </div>
@@ -24,6 +25,7 @@
     <button type="submit" class="btn btn-primary">Create Topic</button>
   </div>
 <?php echo Form::close(); ?>
+</section>
 @stop
 
 @section('scripts')

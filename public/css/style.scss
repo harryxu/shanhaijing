@@ -1,13 +1,8 @@
-.navbar .brand {
-  padding-left: 0;
-}
-
 .page-content {
   padding-top: 20px;
 }
 
 .topic-list-wrapper .list-tools {
-  padding-bottom: 15px;
 }
 
 .topic {
@@ -36,7 +31,25 @@
   }
 }
 
+section {
+  margin-top: 30px;
+  padding-top: 30px;
+  padding: 19px;
+  border: 1px solid #d8d8d8;
+  background-color: #ffffff;
+  border-top-width: 0;
+  border-bottom-width: 2px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
 footer {
   padding: 20px 0;
   a { font-weight: normal; }
 }
+
+
