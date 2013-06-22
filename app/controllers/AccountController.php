@@ -45,11 +45,11 @@ class AccountController extends BaseController
         catch (Cartalyst\Sentry\Users\UserNotActivatedException $e) {
             echo 'User is not activated.';
         }
-        //catch (Exception $e) {
-            //return Redirect::to('account/login')
-                //->withInput()
-                //->with('login_error', true);
-        //}
+        catch (Exception $e) {
+            return Redirect::to('account/login')
+                ->withInput()
+                ->with('login_error', true);
+        }
 
     }
 

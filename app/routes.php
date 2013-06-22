@@ -19,8 +19,9 @@ Route::group(array('prefix' => 'admin'), function()
     Route::controller('settings', 'SiteSettingsController');
 
     // user admin
-    Route::get('user', array('before' => 'can:admin.user.list'), 'UserAdminController@index');
-    Route::any('user/{user}/permissions', array('before' => 'can:admin.user.permission'), 'UserAdminController@permissions');
-
+    Route::get('user', array('uses' => 'UserAdminController@index',
+        'before' => 'can:admin.user.list'));
+    Route::any('user/{user}/permissions', array('uses' => 'UserAdminController@permissions',
+        'before' => 'can:admin.user.permission'));
 });
 
