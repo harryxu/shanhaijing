@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+<section>
 <h1>Login</h1>
 {{ Form::open(array('class' => 'form-horizontal')) }}
 
@@ -36,4 +37,5 @@
 </div>
 
 {{ Form::close() }}
+</section>
 @stop

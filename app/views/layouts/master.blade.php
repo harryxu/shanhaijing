@@ -10,7 +10,9 @@
       {{ HTML::style('vendor/bootstrap/css/bootstrap.css') }}
       {{ HTML::style('vendor/bootplus/css/bootplus.css') }}
     @show
-    {{ HTML::style('css/style.css') }}
+    @section('styles')
+      {{ HTML::style('css/style.css') }}
+    @show
   </head>
   <body>
     <div class="navbar navbar-static-top">
@@ -32,8 +34,10 @@
       </div>
     </div>
 
-    <div class="page-content container">
-      @yield('content')
+    <div class="page-wrap">
+      <div class="container">
+        @yield('content')
+      </div>
     </div>
     <footer class="footer">
       <div class="container">

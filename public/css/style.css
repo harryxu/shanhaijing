@@ -1,8 +1,5 @@
-.page-content {
+.page-wrap {
   padding-top: 20px; }
-
-.topic-list-wrapper .list-tools {
-  padding-bottom: 15px; }
 
 .topic .posts {
   margin-bottom: 20px; }
@@ -39,6 +36,6 @@ section {
   box-shadow: none; }
 
 footer {
-  padding: 20px 0; }
-  footer a {
-    font-weight: normal; }
+  padding: 20px 0;
+  margin-top: 60px;
+  background: #F5F5F5; }

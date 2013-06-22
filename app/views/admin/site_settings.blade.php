@@ -2,6 +2,7 @@
 
 @section('admin_content')
 
+<section>
 <h1>Site settings</h1>
 
 {{ Form::open(array('class' => 'form-horizontal')) }}
@@ -15,5 +16,6 @@
     <button type="submit" class="btn btn-primary">Save</button>
   </div>
 {{ Form::close() }}
+</section>
 
 @stop

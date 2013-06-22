@@ -1,6 +1,6 @@
 <?php
 
-Route::model('user', 'User');
+Route::model('user', 'Shanhaijing\Shjsentry\Users\Eloquent\User');
 
 Route::get('/', 'TopicController@topicList');
 
@@ -19,8 +19,8 @@ Route::group(array('prefix' => 'admin'), function()
     Route::controller('settings', 'SiteSettingsController');
 
     // user admin
-    Route::controller('user', 'UserAdminController');
+    Route::get('user', array('before' => 'can:admin.user.list'), 'UserAdminController@index');
+    Route::any('user/{user}/permissions', array('before' => 'can:admin.user.permission'), 'UserAdminController@permissions');
 
-    Route::get('user/{user}/permissions', 'UserAdminController@permissions');
 });
 
