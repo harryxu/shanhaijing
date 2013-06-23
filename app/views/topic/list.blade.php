@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="topic-list-wrapper">
-  <div class="list-tools">
-  <a class="btn btn-default" href="<?php echo url('topic/create'); ?>">
-    <i class="icon-plus"></i> Create Topic
-  </a>
+  <div class="action-links list-tools">
+    <a class="btn btn-default" href="<?php echo url('topic/create'); ?>">
+      <i class="icon-plus"></i> Create Topic
+    </a>
   </div>
 
   <section>

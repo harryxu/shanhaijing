@@ -18,29 +18,30 @@
     <![endif]-->
   </head>
   <body>
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <div class="nav-collapse collapse">
-            <?php echo link_to('/', '山海经', array('class' => 'brand')); ?>
-            <ul class="nav pull-right">
-              <?php if (Sentry::check()): ?>
-                <li><?php echo link_to('user/'.Sentry::getUser()->username, Sentry::getUser()->username); ?></li>
-                <li><?php echo link_to('account/logout', 'Logout'); ?></li>
-              <?php else: ?>
-                <li><?php echo link_to('account/login', 'Login'); ?></li>
-                <li><?php echo link_to('account/register', 'Register'); ?></li>
-              <?php endif; ?>
-            </ul>
+    <div class="page-wrap">
+      <div class="navbar navbar-static-top navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <div class="nav-collapse collapse">
+              <?php echo link_to('/', '山海经', array('class' => 'brand')); ?>
+              <ul class="nav pull-right">
+                <?php if (Sentry::check()): ?>
+                  <li><?php echo link_to('user/'.Sentry::getUser()->username, Sentry::getUser()->username); ?></li>
+                  <li><?php echo link_to('account/logout', 'Logout'); ?></li>
+                <?php else: ?>
+                  <li><?php echo link_to('account/login', 'Login'); ?></li>
+                  <li><?php echo link_to('account/register', 'Register'); ?></li>
+                <?php endif; ?>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="page-wrap">
-      <div class="container">
+      <div class="container page-content">
         @yield('content')
       </div>
+      <div class="page-wrap-push"></div>
     </div>
     <footer class="footer">
       <div class="container">

@@ -1,5 +1,16 @@
+html, body {
+  height: 100%;
+}
+
 .page-wrap {
-  padding-top: 20px;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -200px;
+
+  .page-content {
+    padding-top: 60px;
+  }
 }
 
 .topic-list-wrapper .list-tools {
@@ -51,7 +62,11 @@ section {
   margin: 20px 0;
 }
 
+.page-wrap-push {
+  height: 200px;
+}
 footer {
+  height: 100px;
   padding: 20px 0;
   margin-top: 60px;
   background: #F5F5F5;
