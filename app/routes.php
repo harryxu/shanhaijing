@@ -3,6 +3,8 @@
 Route::model('user', 'Shanhaijing\Shjsentry\Users\Eloquent\User');
 Route::model('group', 'Cartalyst\Sentry\Groups\Eloquent\Group');
 
+Route::when('*', 'csrf', array('post', 'put'));
+
 Route::get('/', 'TopicController@topicList');
 
 Route::controller('account', 'AccountController');
