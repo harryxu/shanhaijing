@@ -1,6 +1,7 @@
 <?php
 
 Route::model('user', 'Shanhaijing\Shjsentry\Users\Eloquent\User');
+Route::model('group', 'Cartalyst\Sentry\Groups\Eloquent\Group');
 
 Route::get('/', 'TopicController@topicList');
 
@@ -23,5 +24,7 @@ Route::group(array('prefix' => 'admin'), function()
         'before' => 'can:admin.user.list'));
     Route::any('user/{user}/permissions', array('uses' => 'UserAdminController@permissions',
         'before' => 'can:admin.user.permission'));
+
+    Route::resource('group', 'GroupController');
 });
 

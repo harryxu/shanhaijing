@@ -11,6 +11,7 @@
     <ul class="nav nav-list">
       <li><?php echo link_to('admin/settings', 'Site settings'); ?></li>
       <li><?php echo link_to('admin/user', 'Users'); ?></li>
+      <li><?php echo link_to('admin/group', 'Groups'); ?></li>
     </ul>
   </div>
   <div class="span9">

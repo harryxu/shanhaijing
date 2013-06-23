@@ -10,8 +10,8 @@
   <div class="span12">
     <div class="row">
       <div class="span2">
-        <img src="<?php echo $user->getAvatar(60); ?>" alt="" />
-        <strong><?php echo $user->username; ?></strong>
+        <img src="{{ $user->getAvatar(60) }}" alt="" />
+        <strong>{{{ $user->username }}}</strong>
       </div>
       <div class="span2 offset3">
         <div class="btn-group">
