@@ -12,8 +12,9 @@
   <section>
   <h1><?php echo $topic->title; ?></h1>
   <div class="posts">
+      <p></p>
     <?php foreach ($topic->posts() as $post): ?>
-      <div id="post-<?php echo $post->id ?>" class="row">
+      <div id="post-<?php echo $post->id ?>" class="row anchorfix">
         <div class="span9 post">
           <div class="row">
             <div class="avatar span1">

@@ -24,15 +24,20 @@
           <div class="container">
             <div class="nav-collapse collapse">
               <?php echo link_to('/', '山海经', array('class' => 'brand')); ?>
-              <ul class="nav pull-right">
-                <?php if (Sentry::check()): ?>
+              <div class="pull-right">
+                <form class="navbar-search">
+                  <input type="text" class="search-query" placeholder="Search">
+                </form>
+                <ul class="nav">
+                  <?php if (Sentry::check()): ?>
                   <li><?php echo link_to('user/'.Sentry::getUser()->username, Sentry::getUser()->username); ?></li>
                   <li><?php echo link_to('account/logout', 'Logout'); ?></li>
-                <?php else: ?>
+                  <?php else: ?>
                   <li><?php echo link_to('account/login', 'Login'); ?></li>
                   <li><?php echo link_to('account/register', 'Register'); ?></li>
-                <?php endif; ?>
-              </ul>
+                  <?php endif; ?>
+                </ul>
+              </div>
             </div>
           </div>
         </div>

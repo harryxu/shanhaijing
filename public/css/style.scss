@@ -2,15 +2,25 @@ html, body {
   height: 100%;
 }
 
+body {
+  padding-top: 60px;
+  position: relative;
+}
+
 .page-wrap {
   min-height: 100%;
   height: auto !important;
   height: 100%;
   margin: 0 auto -200px;
 
-  .page-content {
-    padding-top: 60px;
-  }
+  /*.page-content {*/
+    /*padding-top: 60px;*/
+  /*}*/
+}
+
+.anchorfix { 
+  padding-top: 60px;
+  margin-top: -60px;
 }
 
 .topic-list-wrapper .list-tools {
