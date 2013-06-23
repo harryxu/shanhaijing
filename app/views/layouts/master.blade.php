@@ -13,6 +13,9 @@
     @section('styles')
       {{ HTML::style('css/style.css') }}
     @show
+    <!--[if lt IE 9]>
+      <?php echo HTML::script('vendor/html5shiv/html5shiv-printshiv.js'); ?>
+    <![endif]-->
   </head>
   <body>
     <div class="navbar navbar-static-top">
