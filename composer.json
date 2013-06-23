@@ -2,6 +2,7 @@
     "name": "bigecko/shanhaijing",
     "description": "Yet another php forum.",
     "keywords": ["forum", "bbs"],
+    "license": "MIT",
     "require": {
         "laravel/framework": "4.0.*",
         "cartalyst/sentry": "2.0.*",

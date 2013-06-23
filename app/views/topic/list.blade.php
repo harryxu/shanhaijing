@@ -9,7 +9,7 @@
   </div>
 
   <section>
-  <table class="table table-bordered table-hover topic-list">
+  <table class="table table-hover topic-list">
     <thead>
       <tr>
         <th>Topic</th>
