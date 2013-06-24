@@ -10,8 +10,8 @@ class AccountController extends BaseController
     public function postRegister()
     {
         $validator = Validator::make(Input::all(), array(
-            'email' => 'required|email',
-            'username' => 'required',
+            'email' => 'required|email|unique:users',
+            'username' => 'required|alpha_num|unique:users',
             'password' => 'required',
         ));
 
