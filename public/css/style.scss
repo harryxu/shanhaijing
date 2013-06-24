@@ -7,6 +7,16 @@ body {
   position: relative;
 }
 
+textarea:focus, input[type="text"]:focus {
+  border-color: #4D90FE;
+}
+.navbar-search .search-query {
+  padding: 0 12px;
+  font-weight: 500;
+  font-size: 1.2em;
+}
+.navbar-search { margin-top: 7px; }
+
 .page-wrap {
   min-height: 100%;
   height: auto !important;
