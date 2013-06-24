@@ -3,7 +3,7 @@ html, body {
 }
 
 body {
-  padding-top: 60px;
+  /*padding-top: 60px;*/
   position: relative;
 }
 
@@ -23,9 +23,9 @@ textarea:focus, input[type="text"]:focus {
   height: 100%;
   margin: 0 auto -200px;
 
-  /*.page-content {*/
-    /*padding-top: 60px;*/
-  /*}*/
+  .page-content {
+    padding-top: 60px;
+  }
 }
 
 .anchorfix { 
