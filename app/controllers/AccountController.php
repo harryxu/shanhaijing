@@ -9,6 +9,17 @@ class AccountController extends BaseController
 
     public function postRegister()
     {
+
+        $validator = Validator::make(Input::all(), array(
+            'email' => 'required|email',
+            'username' => 'required',
+            'password' => 'required',
+        ));
+
+        if ($validator->fails()) {
+            return Redirect::to('account/register')->withErrors($validator)->withInput();
+        }
+
         $user = Sentry::register(array(
             'email'    => Input::get('email'),
             'username' => Input::get('username'),

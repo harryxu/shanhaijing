@@ -4,6 +4,7 @@
 <section>
 <h1>Register</h1>
 {{ Form::open(array('class' => 'form-horizontal')) }}
+@include('inc.form_error')
 <div class="control-group">
   <label class="control-label" for="inputEmail">Email</label>
   <div class="controls">
