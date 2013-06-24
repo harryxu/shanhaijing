@@ -25,16 +25,16 @@ class AccountController extends BaseController
 
     public function postLogin()
     {
-        $login = Input::get('login');
-        $credentials = array('password' => Input::get('password'));
-        if (strpos($login, '@') === false) { // login by username
-            $credentials['username'] = $login;
-        }
-        else { // login by email
-            $user = Sentry::getUserProvider()->findByEmail($login);
-            $credentials['username'] = $user->username;
-        }
         try {
+            $login = Input::get('login');
+            $credentials = array('password' => Input::get('password'));
+            if (strpos($login, '@') === false) { // login by username
+                $credentials['username'] = $login;
+            }
+            else { // login by email
+                $user = Sentry::getUserProvider()->findByEmail($login);
+                $credentials['username'] = $user->username;
+            }
             // Try to authenticate the user
             $user = Input::has('remember')
                 ? Sentry::authenticateAndRemember($credentials)
