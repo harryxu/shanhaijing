@@ -120,7 +120,7 @@ return array(
 		|
 		*/
 
-		'model' => 'Cartalyst\Sentry\Users\Eloquent\User',
+		'model' => 'Shanhaijing\Shjsentry\Users\Eloquent\User',
 
 		/*
 		|--------------------------------------------------------------------------
