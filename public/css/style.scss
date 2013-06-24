@@ -62,6 +62,15 @@ textarea:focus, input[type="text"]:focus {
   }
 }
 
+.user-show {
+  .user-head {
+    .username {
+      font-size: 36px;
+      line-height: 1;
+    }
+  }
+}
+
 section {
   margin-top: 30px;
   padding-top: 30px;

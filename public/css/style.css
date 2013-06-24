@@ -47,6 +47,10 @@ textarea:focus, input[type="text"]:focus {
           .topic .posts .post .post-header .time a:hover {
             text-decoration: underline; }
 
+.user-show .user-head .username {
+  font-size: 36px;
+  line-height: 1; }
+
 section {
   margin-top: 30px;
   padding-top: 30px;

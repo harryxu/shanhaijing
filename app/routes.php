@@ -14,7 +14,12 @@ Route::get('t/{id}', 'TopicController@getView');
 Route::controller('topic', 'TopicController');
 
 /**
- *  Admin
+ * User
+ */
+Route::get('user/{username}', 'UserController@show');
+
+/**
+ * Admin
  */
 Route::group(array('prefix' => 'admin', 'before' => 'login_required'), function()
 {

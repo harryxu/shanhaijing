@@ -18,4 +18,15 @@ class Provider extends SentryUserProvider {
         return $user;
     }
 
+    public function findByUsername($username)
+    {
+        $model = $this->createModel();
+
+        if (!$user = $model->newQuery()->where('username', '=', $username)->first()) {
+            throw new UserNotFoundException("A user could not be found with a username value of [$username].");
+        }
+
+        return $user;
+    }
+
 }
