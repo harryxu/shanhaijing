@@ -30,7 +30,12 @@
                 </form>
                 <ul class="nav">
                   <?php if (Sentry::check()): ?>
-                  <li><?php echo link_to('user/'.Sentry::getUser()->username, Sentry::getUser()->username); ?></li>
+                  <li>
+                    <a href="<?php echo url('user/'.Sentry::getUser()->username); ?>">
+                      <img src="<?php echo Sentry::getUser()->getAvatar(20); ?>" alt="" />
+                      {{{ Sentry::getUser()->username }}}
+                    </a>
+                  </li>
                   <li><?php echo link_to('account/logout', 'Logout'); ?></li>
                   <?php else: ?>
                   <li><?php echo link_to('account/login', 'Login'); ?></li>
