@@ -16,7 +16,7 @@ Route::controller('topic', 'TopicController');
 /**
  *  Admin
  */
-Route::group(array('prefix' => 'admin'), function()
+Route::group(array('prefix' => 'admin', 'before' => 'login_required'), function()
 {
     // site settings
     Route::controller('settings', 'SiteSettingsController');
