@@ -9,7 +9,6 @@ class AccountController extends BaseController
 
     public function postRegister()
     {
-
         $validator = Validator::make(Input::all(), array(
             'email' => 'required|email',
             'username' => 'required',
@@ -36,6 +35,14 @@ class AccountController extends BaseController
 
     public function postLogin()
     {
+        $validator = Validator::make(Input::all(), array(
+            'login' => 'required',
+            'password' => 'required',
+        ));
+        if ($validator->fails()) {
+            return Redirect::to('account/login')->withErrors($validator)->withInput();
+        }
+
         try {
             $login = Input::get('login');
             $credentials = array('password' => Input::get('password'));

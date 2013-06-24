@@ -5,6 +5,8 @@
 <h1>Login</h1>
 {{ Form::open(array('class' => 'form-horizontal')) }}
 
+@include('inc.form_error')
+
 <?php if (Session::has('login_error')): ?>
 <div class="alert alert-error">
   Login failed.
