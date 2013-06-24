@@ -64,6 +64,7 @@
     @section('scripts')
       <?php echo HTML::script('vendor/jquery/jquery-1.10.1.min.js'); ?>
       <?php echo HTML::script('vendor/bootstrap/js/bootstrap.min.js'); ?>
+      <?php echo HTML::script('vendor/parsleyjs/parsley.js'); ?>
     @show
   </body>
 </html>

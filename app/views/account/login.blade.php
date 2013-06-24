@@ -3,7 +3,7 @@
 @section('content')
 <section>
 <h1>Login</h1>
-{{ Form::open(array('class' => 'form-horizontal')) }}
+<?php echo Form::open(array('class' => 'form-horizontal', 'data-validate' => 'parsley')); ?>
 
 @include('inc.form_error')
 
@@ -15,14 +15,14 @@
 <div class="control-group">
   <label class="control-label" for="inputEmail">Username or Email</label>
   <div class="controls">
-    <?php echo Form::text('login');  ?>
+    <?php echo Form::text('login', '', array('data-required' => 'true'));  ?>
   </div>
 </div>
 
 <div class="control-group">
   <label class="control-label" for="inputPassword">Password</label>
   <div class="controls">
-    <?php echo Form::password('password');  ?>
+    <?php echo Form::password('password', array('data-required' => 'true'));  ?>
   </div>
 </div>
 
@@ -38,6 +38,6 @@
   <button type="submit" class="btn btn-primary">Login</button>
 </div>
 
-{{ Form::close() }}
+<?php echo Form::close(); ?>
 </section>
 @stop
