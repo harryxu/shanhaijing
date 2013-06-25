@@ -8,8 +8,9 @@ class TopicController extends BaseController
 {
     public function __construct()
     {
+        parent::__construct();
         $this->beforeFilter('login_required', array('only' => array(
-            'create', 'store', 'edit', 'update', 'postReply')));
+            'create', 'store', 'edit', 'update', 'delete', 'destroy', 'postReply')));
     }
 
     public function index()
@@ -96,24 +97,9 @@ class TopicController extends BaseController
         return Redirect::to('t/'.$topic->id);
     }
 
-    /**
-     * Post a new reply to a topic.
-     */
-    public function postReply()
+    public function delete($topic)
     {
-        $topic = Topic::find(Input::get('topic_id'));
-
-        $post = Post::create(array(
-            'body' => Input::get('body'),
-        ));
-        $post->user_id = Sentry::getUser()->id;
-        $post->topic_id = $topic->id;
-        $post->save();
-        $topic->last_post_at = $topic->freshTimestamp();
-        $topic->posts_count += 1;
-        $topic->save();
-
-        return Redirect::to('t/' . $topic->id . '#post-' . $post->id);
+        return 'Not implement yet.';
     }
 
     protected function validator()

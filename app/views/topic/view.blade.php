@@ -24,8 +24,8 @@
   </section>
 
   <?php if (Sentry::check()): ?> 
-  <section class="reply-form">
-  <?php echo Form::open(array('url' => 'topic/reply', 'class' => 'topic-reply', 'data-validate' => 'parsley')); ?>
+  <section class="reply-form" name="reply">
+  <?php echo Form::open(array('url' => 'post', 'class' => 'topic-reply', 'data-validate' => 'parsley')); ?>
     <h3>Reply</h3>
     <input type="hidden" name="topic_id" value="<?php echo $topic->id; ?>" />
     <div class="controls">
