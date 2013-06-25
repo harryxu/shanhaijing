@@ -7,9 +7,11 @@ body {
   position: relative;
 }
 
+textarea { padding: 8px; }
 textarea:focus, input[type="text"]:focus {
   border-color: #4D90FE;
 }
+
 .navbar-search .search-query {
   padding: 0 12px;
   font-weight: 500;
@@ -48,14 +50,25 @@ textarea:focus, input[type="text"]:focus {
       }
       .post-header {
         padding-bottom: 10px;
-        .time {
-          a { 
-            color: #AAAAAA; 
-            text-decoration: none;
-            font-size: 0.9em;
-            &:hover { text-decoration: underline; }
-          }
+        .username {
+          float: left;
+        }
+        .post-meta{
           float: right;
+          .time {
+            a { 
+              color: #AAAAAA; 
+              text-decoration: none;
+              font-size: 0.9em;
+              &:hover { text-decoration: underline; }
+            }
+          }
+          .btn {
+            height: auto;
+            min-height: auto;
+            line-height: 1;
+          }
+          
         }
       }
     }

@@ -13,5 +13,10 @@ class Post extends Eloquent
     {
         return $this->belongsTo('Shanhaijing\Shjsentry\Users\Eloquent\User');
     }
+
+    public function topic()
+    {
+        return $this->belongsTo('Topic');
+    }
 }
 

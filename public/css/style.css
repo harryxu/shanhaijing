@@ -5,6 +5,9 @@ body {
   /*padding-top: 60px;*/
   position: relative; }
 
+textarea {
+  padding: 8px; }
+
 textarea:focus, input[type="text"]:focus {
   border-color: #4D90FE; }
 
@@ -38,14 +41,20 @@ textarea:focus, input[type="text"]:focus {
       text-align: center; }
     .topic .posts .post .post-header {
       padding-bottom: 10px; }
-      .topic .posts .post .post-header .time {
+      .topic .posts .post .post-header .username {
+        float: left; }
+      .topic .posts .post .post-header .post-meta {
         float: right; }
-        .topic .posts .post .post-header .time a {
+        .topic .posts .post .post-header .post-meta .time a {
           color: #AAAAAA;
           text-decoration: none;
           font-size: 0.9em; }
-          .topic .posts .post .post-header .time a:hover {
+          .topic .posts .post .post-header .post-meta .time a:hover {
             text-decoration: underline; }
+        .topic .posts .post .post-header .post-meta .btn {
+          height: auto;
+          min-height: auto;
+          line-height: 1; }
 
 .user-show .user-head .username {
   font-size: 36px;
