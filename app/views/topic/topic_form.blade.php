@@ -8,10 +8,11 @@
 @section('content')
 <section>
 <h1>Create Topic</h1>
-<?php echo Form::open(array()); ?>
+<?php echo Form::open(array('data-validate' => 'parsley')); ?>
+  @include('inc.form_error')
   <div class="controls">
-    <?php echo Form::text('title', '', array(
-      'placeholder' => 'Type topic title here.', 'class' => 'span5')); ?>
+    <?php echo Form::text('title', '', array('placeholder' => 'Type topic title here.', 
+      'class' => 'span5', 'data-required' => 'true')); ?>
     <div class="wmd-panel">
       <div id="wmd-button-bar"></div>
       <?php echo Form::textarea('body', '', array(

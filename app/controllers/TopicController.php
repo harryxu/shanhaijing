@@ -27,6 +27,13 @@ class TopicController extends BaseController
 
     public function postCreate()
     {
+        $validator = $this->validator();
+        if ($validator->fails()) {
+            return Redirect::to('topic/create')
+                ->withErrors($validator)->withInput();
+        }
+
+
         $user = Sentry::getUser();
         $topic = new Topic();
         $topic->user_id = $user->id;
@@ -76,6 +83,14 @@ class TopicController extends BaseController
         $topic->save();
 
         return Redirect::to('t/' . $topic->id . '#post-' . $post->id);
+    }
+
+    protected function validator()
+    {
+        $validator = Validator::make(Input::all(), array(
+            'title' => 'required',
+        ));
+        return $validator;
     }
 }
 

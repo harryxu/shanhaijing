@@ -40,7 +40,7 @@
 
   <?php if (Sentry::check()): ?> 
   <section class="reply-form">
-  <?php echo Form::open(array('url' => 'topic/reply', 'class' => 'topic-reply')); ?>
+  <?php echo Form::open(array('url' => 'topic/reply', 'class' => 'topic-reply', 'data-validate' => 'parsley')); ?>
     <h3>Reply</h3>
     <input type="hidden" name="topic_id" value="<?php echo $topic->id; ?>" />
     <div class="controls">
@@ -49,7 +49,9 @@
         <?php echo Form::textarea('body', '', array(
           'placeholder' => 'Type topic body here.', 
           'class' => 'span9', 
-          'id' => 'wmd-input')); ?>
+          'id' => 'wmd-input',
+          'data-required' => 'true',
+        )); ?>
       </div>
     </div>
     

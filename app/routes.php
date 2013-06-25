@@ -2,6 +2,7 @@
 
 Route::model('user', 'Shanhaijing\Shjsentry\Users\Eloquent\User');
 Route::model('group', 'Cartalyst\Sentry\Groups\Eloquent\Group');
+Route::model('topic', 'Topic');
 
 Route::when('*', 'csrf', array('post', 'put'));
 
