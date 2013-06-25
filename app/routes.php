@@ -13,7 +13,6 @@ Route::controller('account', 'AccountController');
 
 // Topic
 Route::get('t/{topic}', 'TopicController@show');
-Route::get('t/{topic}/edit', 'TopicController@edit');
 Route::resource('topic', 'TopicController');
 
 /**

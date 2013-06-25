@@ -20,8 +20,8 @@
           <ul class="dropdown-menu">
             <li><a href="#"><i class="icon-reply"></i> Reply</a></li>
             <?php if ($post->user_id == Sentry::getUser()->id || Sentry::getUser()->hasAccess('topic.manage')):  ?>
-            <li><a href="<?php echo $post->id == $topic->first_post_id ? url('t/' . $topic->id . '/edit') : url('post/' . $post->id . '/edit'); ?>"><i class="icon-edit"></i> Edit</a></li>
-            <li><a href="<?php echo $post->id == $topic->first_post_id ? url('t/' . $topic->id . '/delete') : url('post/' . $post->id . '/delete'); ?>"><i class="icon-remove"></i> Delete</a></li>
+            <li><a href="<?php echo $post->id == $topic->first_post_id ? url('topic/' . $topic->id . '/edit') : url('post/' . $post->id . '/edit'); ?>"><i class="icon-edit"></i> Edit</a></li>
+            <li><a href="<?php echo $post->id == $topic->first_post_id ? url('topic/' . $topic->id . '/delete') : url('post/' . $post->id . '/delete'); ?>"><i class="icon-remove"></i> Delete</a></li>
             <?php endif; ?>
           </ul>
         </div>
