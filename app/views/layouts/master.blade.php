@@ -9,6 +9,10 @@
     @section('vendor-styles')
       {{ HTML::style('vendor/bootstrap/css/bootstrap.css') }}
       {{ HTML::style('vendor/bootplus/css/bootplus.css') }}
+      {{ HTML::style('vendor/font-awesome/css/font-awesome.min.css') }}
+      <!--[if IE 7]>
+        {{ HTML::style('vendor/font-awesome/css/font-awesome-ie7.min.css') }}
+      <![endif]-->
     @show
     @section('styles')
       {{ HTML::style('css/style.css') }}
