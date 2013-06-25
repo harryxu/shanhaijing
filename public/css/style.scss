@@ -62,6 +62,21 @@ textarea:focus, input[type="text"]:focus {
   }
 }
 
+.topic-title-wrap {
+  position: relative;
+  a.topic-read-status { 
+    display: inline-block;
+    height: 38px;
+    left: -8px;
+    position: absolute;
+    top: -9px;
+    width: 2px;
+    &:link, &:active { background: #CFEAFF; }
+    &:visited { background: #FFFFFF; }
+  }
+
+}
+
 .user-show {
   .user-head {
     .username {

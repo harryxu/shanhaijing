@@ -21,8 +21,12 @@
       <?php foreach ($topics as $topic): ?>
         <tr>
           <td>
-            <img src="<?php echo $topic->user->getAvatar(20); ?>" alt="" />
-            <?php echo link_to('t/' . $topic->id, $topic->title); ?>
+            <div class="topic-title-wrap">
+              <?php $url =  't/' . $topic->id. '#' . strtotime($topic->last_post_at); ?>
+              <?php echo link_to($url, ' ', array('class' => 'topic-read-status')); ?>
+              <img src="<?php echo $topic->user->getAvatar(20); ?>" alt="" />
+              <?php echo link_to($url, $topic->title); ?>
+            </div>
           </td>
           <td><?php echo $topic->user->username; ?></td>
           <td><?php echo $topic->posts_count; ?></td>

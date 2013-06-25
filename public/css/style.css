@@ -47,6 +47,20 @@ textarea:focus, input[type="text"]:focus {
           .topic .posts .post .post-header .time a:hover {
             text-decoration: underline; }
 
+.topic-title-wrap {
+  position: relative; }
+  .topic-title-wrap a.topic-read-status {
+    display: inline-block;
+    height: 38px;
+    left: -8px;
+    position: absolute;
+    top: -9px;
+    width: 2px; }
+    .topic-title-wrap a.topic-read-status:link, .topic-title-wrap a.topic-read-status:active {
+      background: #CFEAFF; }
+    .topic-title-wrap a.topic-read-status:visited {
+      background: #FFFFFF; }
+
 .user-show .user-head .username {
   font-size: 36px;
   line-height: 1; }
