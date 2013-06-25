@@ -9,10 +9,10 @@ class TopicController extends BaseController
     public function __construct()
     {
         $this->beforeFilter('login_required', array('only' => array(
-            'getCreate', 'postCreate', 'postReply')));
+            'create', 'store', 'edit', 'update', 'postReply')));
     }
 
-    public function topicList()
+    public function index()
     {
         $topics = Topic::orderBy('last_post_at', 'DESC')->get();
         return View::make('topic/list', array(
@@ -20,12 +20,22 @@ class TopicController extends BaseController
         ));
     }
 
-    public function getCreate()
+    /**
+     * Topic view page.
+     */
+    public function show($topic)
+    {
+        return View::make('topic/view', array(
+            'topic' => $topic,
+        ));
+    }
+
+    public function create()
     {
         return View::make('topic/topic_form');
     }
 
-    public function postCreate()
+    public function store()
     {
         $user = Sentry::getUser();
         $topic = new Topic();
@@ -47,15 +57,36 @@ class TopicController extends BaseController
         return Redirect::to('t/'.$topic->id);
     }
 
-    /**
-     * Topic view page.
-     */
-    public function getView($id)
+
+    public function edit($topic)
     {
-        $topic = Topic::find($id);
-        return View::make('topic/view', array(
+        $user = Sentry::getUser();
+        if ($user->id != $topic->user_id && !$user->hasAccess('topic.manage')) {
+            App::abort(403);
+        }
+        return View::make('topic/topic_form', array(
             'topic' => $topic,
+            'post' => Post::find($topic->first_post_id),
         ));
+    }
+
+    public function update($topic)
+    {
+        $user = Sentry::getUser();
+        if ($user->id != $topic->user_id && !$user->hasAccess('topic.manage')) {
+            App::abort(403);
+        }
+
+        DB::transaction(function() use($topic) {
+            $topic->title = Input::get('title');
+            $topic->save();
+
+            $post = Post::find($topic->first_post_id);
+            $post->body = Input::get('body');
+            $post->save();
+        });
+
+        return Redirect::to('t/'.$topic->id);
     }
 
     /**

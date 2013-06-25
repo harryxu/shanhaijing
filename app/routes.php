@@ -2,16 +2,19 @@
 
 Route::model('user', 'Shanhaijing\Shjsentry\Users\Eloquent\User');
 Route::model('group', 'Cartalyst\Sentry\Groups\Eloquent\Group');
+Route::model('topic', 'Topic');
+Route::model('post', 'Post');
 
 Route::when('*', 'csrf', array('post', 'put'));
 
-Route::get('/', 'TopicController@topicList');
+Route::get('/', 'TopicController@index');
 
 Route::controller('account', 'AccountController');
 
 // Topic
-Route::get('t/{id}', 'TopicController@getView');
-Route::controller('topic', 'TopicController');
+Route::get('t/{topic}', 'TopicController@show');
+Route::get('t/{topic}/edit', 'TopicController@edit');
+Route::resource('topic', 'TopicController');
 
 /**
  * User
