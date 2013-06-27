@@ -40,7 +40,7 @@ class PostController extends BaseController
             $topic->save();
         });
 
-        return redirect::to('t/' . $topic->id . '#post-' . $post->id);
+        return Redirect::to('t/' . $topic->id . '#post-' . $post->id);
     }
 
     public function edit($post)
