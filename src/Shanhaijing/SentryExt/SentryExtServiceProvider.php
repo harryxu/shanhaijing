@@ -1,9 +1,9 @@
-<?php namespace Shanhaijing\Shjsentry;
+<?php namespace Shanhaijing\SentryExt;
 
-use Shanhaijing\Shjsentry\Users\Eloquent\Provider as UserProvider;
+use Shanhaijing\SentryExt\Users\Eloquent\Provider as UserProvider;
 use Cartalyst\Sentry\SentryServiceProvider;
 
-class ShjsentryServiceProvider extends SentryServiceProvider {
+class SentryExtServiceProvider extends SentryServiceProvider {
 
     protected function registerUserProvider()
     {

@@ -11,7 +11,7 @@ class Post extends Eloquent
     
     public function user()
     {
-        return $this->belongsTo('Shanhaijing\Shjsentry\Users\Eloquent\User');
+        return $this->belongsTo('Shanhaijing\SentryExt\Users\Eloquent\User');
     }
 
     public function topic()

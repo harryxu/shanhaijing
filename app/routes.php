@@ -1,7 +1,7 @@
 <?php
 
 // Model bindings.
-Route::model('user', 'Shanhaijing\Shjsentry\Users\Eloquent\User');
+Route::model('user', 'Shanhaijing\SentryExt\Users\Eloquent\User');
 Route::model('group', 'Cartalyst\Sentry\Groups\Eloquent\Group');
 Route::model('topic', 'Topic');
 Route::model('post', 'Post');

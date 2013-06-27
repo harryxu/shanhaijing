@@ -120,7 +120,7 @@ return array(
 		|
 		*/
 
-		'model' => 'Shanhaijing\Shjsentry\Users\Eloquent\User',
+		'model' => 'Shanhaijing\SentryExt\Users\Eloquent\User',
 
 		/*
 		|--------------------------------------------------------------------------

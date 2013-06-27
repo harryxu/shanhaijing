@@ -6,7 +6,7 @@ class PostController extends BaseController
     {
         parent::__construct();
         $this->beforeFilter('login_required', array('only' => array(
-            'store', 'edit', 'update', 'delete', 'destroy', 'postReply')));
+            'store', 'edit', 'update', 'delete', 'destroy')));
     }
 
     public function store()

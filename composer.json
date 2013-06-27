@@ -1,5 +1,5 @@
 {
-    "name": "bigecko/shanhaijing",
+    "name": "shanhaijing/shanhaijing",
     "description": "Yet another php forum.",
     "keywords": ["forum", "bbs"],
     "license": "MIT",
@@ -19,10 +19,10 @@
             "app/tests/TestCase.php"
         ],
         "files": [
-            "app/src/Shanhaijing/Support/helpers.php"
+            "src/Shanhaijing/Support/helpers.php"
         ],
         "psr-0": {
-            "Shanhaijing": "app/src"
+            "Shanhaijing\\": "src/"
         }
     },
     "scripts": {

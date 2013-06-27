@@ -1,4 +1,4 @@
-<?php namespace Shanhaijing\Shjsentry\Users\Eloquent;
+<?php namespace Shanhaijing\SentryExt\Users\Eloquent;
 
 use Cartalyst\Sentry\Users\Eloquent\Provider as SentryUserProvider;
 use Cartalyst\Sentry\Users\UserNotFoundException;

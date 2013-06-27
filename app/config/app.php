@@ -114,7 +114,7 @@ return array(
         'Illuminate\View\ViewServiceProvider',
         'Illuminate\Workbench\WorkbenchServiceProvider',
 
-        'Shanhaijing\Shjsentry\ShjsentryServiceProvider',
+        'Shanhaijing\SentryExt\SentryExtServiceProvider',
         'Shanhaijing\Markdown\MarkdownServiceProvider',
         'Shanhaijing\Variable\VariableServiceProvider',
 

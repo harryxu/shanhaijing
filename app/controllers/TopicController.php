@@ -10,7 +10,7 @@ class TopicController extends BaseController
     {
         parent::__construct();
         $this->beforeFilter('login_required', array('only' => array(
-            'create', 'store', 'edit', 'update', 'delete', 'destroy', 'postReply')));
+            'create', 'store', 'edit', 'update', 'delete', 'destroy')));
     }
 
     public function index()
