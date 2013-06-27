@@ -2,8 +2,12 @@
 
 class BaseController extends Controller {
 
+    // current logged in user
+    protected $user;
+
     public function __construct()
     {
+        $this->user = Sentry::getUser();
     }
 
     /**

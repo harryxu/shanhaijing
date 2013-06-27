@@ -69,7 +69,7 @@ class TopicController extends BaseController
     public function edit($topic)
     {
         $user = Sentry::getUser();
-        if ($user->id != $topic->user_id && !$user->hasAccess('topic.manage')) {
+        if ($user->id != $topic->user_id && !$user->hasAccess('topic.update')) {
             App::abort(403);
         }
         return View::make('topic/topic_form', array(
@@ -81,7 +81,7 @@ class TopicController extends BaseController
     public function update($topic)
     {
         $user = Sentry::getUser();
-        if ($user->id != $topic->user_id && !$user->hasAccess('topic.manage')) {
+        if ($user->id != $topic->user_id && !$user->hasAccess('topic.update')) {
             App::abort(403);
         }
 

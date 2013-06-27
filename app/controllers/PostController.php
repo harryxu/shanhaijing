@@ -40,12 +40,34 @@ class PostController extends BaseController
             $topic->save();
         });
 
-        return Redirect::to('t/' . $topic->id . '#post-' . $post->id);
+        return redirect::to('t/' . $topic->id . '#post-' . $post->id);
     }
 
     public function edit($post)
     {
-        return 'Not implement yet.';
+        if ($this->user->id !== $post->user->id && !$this->user->hasAccess('post.update')) {
+            App::abort(403);
+        }
+
+        return View::make('post/form', array('post' => $post));
+    }
+
+    public function update($post)
+    {
+        if ($this->user->id !== $post->user->id && !$this->user->hasAccess('post.update')) {
+            App::abort(403);
+        }
+
+        $validator = $this->validator();
+        if ($validator->fails()) {
+            return Redirect::to('post/' . $post->id . '/edit')
+                ->withErrors($validator)->withInput();
+        }
+
+        $post->body = Input::get('body');
+        $post->save();
+
+        return Redirect::to('t/' . $post->topic_id . '#post-' . $post->id);
     }
 
     public function delete($post)
