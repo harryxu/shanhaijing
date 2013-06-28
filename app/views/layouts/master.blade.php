@@ -28,12 +28,28 @@
           <div class="container">
             <div class="nav-collapse collapse">
               <?php echo link_to('/', '山海经', array('class' => 'brand')); ?>
+              <form class="navbar-search">
+                <input type="text" class="search-query" placeholder="Search">
+              </form>
               <div class="pull-right">
-                <form class="navbar-search">
-                  <input type="text" class="search-query" placeholder="Search">
-                </form>
                 <ul class="nav">
-                  <?php if (Sentry::check()): ?>
+                  <?php if (Sentry::check()): $_num_noti = count($notifications); ?>
+
+                  <li class="dropdown notification num{{ $_num_noti }}">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                      <i class="icon-bell"></i> <span>{{ $_num_noti }}</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <?php if ($_num_noti > 0): ?>
+                        <?php foreach ($notifications as $noti): ?>
+                          <li><?php echo link_to('notification/' . $noti->id, $noti->msg); ?></li>
+                        <?php endforeach; ?>
+                        <li class="divider"></li>
+                      <?php endif; ?>
+                      <li><a href="#">View all notifications</a></li>
+                    </ul>
+                  </li>
+
                   <li>
                     <a href="<?php echo url('user/'.Sentry::getUser()->username); ?>">
                       <img src="<?php echo Sentry::getUser()->getAvatar(20); ?>" alt="" />

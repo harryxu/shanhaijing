@@ -19,6 +19,17 @@ textarea:focus, input[type="text"]:focus {
 .navbar-search {
   margin-top: 7px; }
 
+.navbar .nav > li > a {
+  min-height: 21px; }
+.navbar .notification .dropdown-toggle {
+  color: #427fed;
+  font-weight: bold; }
+  .navbar .notification .dropdown-toggle [class^="icon-"] {
+    line-height: normal; }
+.navbar .notification.num0 .dropdown-toggle {
+  font-weight: normal;
+  color: #D1D1D1; }
+
 .page-wrap {
   min-height: 100%;
   height: auto !important;
