@@ -26,6 +26,7 @@ class CreateNotifications extends Migration {
             $table->string('msg'); 
 
             $table->datetime('created_at');
+            $table->datetime('updated_at');
             $table->boolean('readed')->default(false);
 
             // Extra data.

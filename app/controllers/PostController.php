@@ -40,6 +40,8 @@ class PostController extends BaseController
             $topic->save();
         });
 
+        Event::fire('post.create', array($post));
+
         return Redirect::to('t/' . $topic->id . '#post-' . $post->id);
     }
 
