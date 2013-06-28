@@ -5,6 +5,7 @@ Route::model('user', 'Shanhaijing\SentryExt\Users\Eloquent\User');
 Route::model('group', 'Cartalyst\Sentry\Groups\Eloquent\Group');
 Route::model('topic', 'Topic');
 Route::model('post', 'Post');
+Route::model('notification', 'Notification');
 
 // All post form need csrf protection.
 Route::when('*', 'csrf', array('post', 'put'));
@@ -23,6 +24,9 @@ Route::get('topic/{topic}/delete', 'TopicController@delete');
 // Post
 Route::resource('post', 'PostController');
 Route::get('post/{post}/delete', 'PostController@delete');
+
+// Notification
+Route::resource('notification', 'NotificationController', array('before' => 'login_required'));
 
 // User
 Route::get('user/{username}', 'UserController@show');
