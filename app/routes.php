@@ -46,3 +46,8 @@ Route::group(array('prefix' => 'admin', 'before' => 'login_required'), function(
     Route::resource('group', 'GroupController');
 });
 
+
+// static pages
+Route::get('opensource', function() {
+    return View::make('static/opensource');
+});

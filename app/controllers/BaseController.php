@@ -8,8 +8,6 @@ class BaseController extends Controller {
     public function __construct()
     {
         $this->user = Sentry::getUser();
-
-        View::share('notifications', $this->getNotifications());
     }
 
     /**
@@ -24,19 +22,4 @@ class BaseController extends Controller {
             $this->layout = View::make($this->layout);
         }
     }
-
-    protected function getNotifications()
-    {
-        $notifincations = array();
-        if (Sentry::check()) {
-            $user = Sentry::getUser();
-
-            $notifincations = Notification::where('user_id', $user->id)
-                ->where('readed', 0)
-                ->get();
-        }
-
-        return $notifincations;
-    }
-
 }
