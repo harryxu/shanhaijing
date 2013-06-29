@@ -76,7 +76,7 @@
     </div>
     <footer class="footer">
       <div class="container">
-        <p>Shanhaijing is a opensource forum appliaction.</p>
+        <p>Shanhaijing is a {{ link_to('opensource', 'open source') }} forum appliaction.</p>
         <p>The source code is hosted on <a href="https://github.com/harryxu/shanhaijing" target="_blank">github</a>.</p>
         <p>Sponsored by <a href="http://bigecko.com" target="_blank">bigecko.com</a></p>
       </div>

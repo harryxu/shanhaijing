@@ -117,6 +117,7 @@ return array(
         'Shanhaijing\SentryExt\SentryExtServiceProvider',
         'Shanhaijing\Markdown\MarkdownServiceProvider',
         'Shanhaijing\Variable\VariableServiceProvider',
+        'Shanhaijing\Notification\NotificationServiceProvider',
 
     ),
 

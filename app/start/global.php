@@ -1,5 +1,7 @@
 <?php
 
+use Shanhaijing\Support\Facades\Notification;
+
 /*
 |--------------------------------------------------------------------------
 | Register The Laravel Class Loader
@@ -97,15 +99,4 @@ App::singleton('htmlpurifier', function()
 
 Event::listen('post.create', 'PostHander@onCreate');
 
-
-// TODO put notifications share to service
-$notifincations = array();
-if (Sentry::check()) {
-    $user = Sentry::getUser();
-
-    $notifincations = Notification::where('user_id', $user->id)
-        ->where('readed', 0)
-        ->get();
-}
-View::share('notifications', $notifincations);
-
+View::share('notifications', Sentry::check() ? Notification::userNotifications(Sentry::getUser()->id) : array());
