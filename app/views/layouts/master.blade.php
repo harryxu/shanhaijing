@@ -84,6 +84,11 @@
 
     @section('scripts')
       <?php echo HTML::script('vendor/jquery/jquery-1.10.1.min.js'); ?>
+      <?php echo HTML::script('js/shanhaijing.js'); ?>
+      <script type="text/javascript">
+        jQuery.extend(Shanhaijing.settings, <?php 
+          $js = shanhaijing_add_js(); echo json_encode($js['settings']); ?>);
+      </script>
       <?php echo HTML::script('vendor/bootstrap/js/bootstrap.min.js'); ?>
       <?php echo HTML::script('vendor/parsleyjs/parsley.js'); ?>
     @show

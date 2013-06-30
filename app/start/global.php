@@ -72,7 +72,15 @@ App::error(function(Exception $exception, $code)
 
 App::down(function()
 {
-	return Response::make("Be right back!", 503);
+    return Response::make("Be right back!", 503);
+});
+
+App::before(function()
+{
+    shanhaijing_add_js(array(
+        'token' => Session::token(),
+        'base_url' => url('/'),
+    ), 'setting');
 });
 
 /*

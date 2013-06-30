@@ -44,3 +44,23 @@ if (!function_exists('time_passed')) {
         */
     }
 }
+
+/**
+ * Add or get javascript.
+ */
+if (!function_exists('shanhaijing_add_js')) {
+    function shanhaijing_add_js($data = null, $type = 'setting')
+    {
+        static $js = array('settings' => array());
+
+        if (isset($data)) {
+            switch ($type) {
+            case 'setting':
+                $js['settings'] = array_merge($js['settings'], $data);
+                break;
+            }
+        }
+
+        return $js;
+    }
+}
