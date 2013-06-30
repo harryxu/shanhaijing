@@ -26,6 +26,7 @@ Route::resource('post', 'PostController');
 Route::get('post/{post}/delete', 'PostController@delete');
 
 // Notification
+Route::post('notification/updates', 'NotificationController@updates');
 Route::resource('notification', 'NotificationController', array('before' => 'login_required'));
 
 // User

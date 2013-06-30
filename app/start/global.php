@@ -80,6 +80,7 @@ App::before(function()
     shanhaijing_add_js(array(
         'token' => Session::token(),
         'base_url' => url('/'),
+        'sitename' => Variable::get('sitename'),
     ), 'setting');
 });
 

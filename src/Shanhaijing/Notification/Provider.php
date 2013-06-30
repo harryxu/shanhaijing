@@ -11,14 +11,21 @@ class Provider {
         }
     }
 
-    public function userNotifications($user_id, $readed = false)
+    /**
+     * Get unread notifications for user.
+     */
+    public function userNotifications($user_id, $startTime = null)
     {
         $model = $this->createModel();
-        $notifincations = $model->newQuery()->where('user_id', $user_id)
-            ->where('readed', $readed)
-            ->get();
+        $query = $model->newQuery()->where('user_id', $user_id)
+            ->where('readed', false);
+        if (isset($startTime)) {
+            $dt = new \DateTime();
+            $dt->setTimestamp($startTime);
+            $query->where('created_at' , '>=', $dt);
+        }
 
-        return $notifincations;
+        return $query->get();
     }
 
     protected function createModel()
