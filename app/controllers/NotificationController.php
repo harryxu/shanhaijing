@@ -29,6 +29,12 @@ class NotificationController extends BaseController
         }
     }
 
+    public function markAllAsRead()
+    {
+        Notification::markAllAsRead($this->user->id);
+        return Redirect::back();
+    }
+
     /**
      * Check for new notifications.
      */

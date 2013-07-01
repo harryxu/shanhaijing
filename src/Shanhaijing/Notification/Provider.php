@@ -28,6 +28,14 @@ class Provider {
         return $query->get();
     }
 
+    public function markAllAsRead($user_id)
+    {
+        $model = $this->createModel();
+        $model->newQuery()->where('user_id', $user_id)
+            ->where('readed', false)
+            ->update(array('readed' => true));
+    }
+
     protected function createModel()
     {
         $class = '\\'.ltrim($this->model, '\\');

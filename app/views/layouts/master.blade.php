@@ -45,7 +45,8 @@
                           <li><?php echo link_to('notification/' . $noti->id, $noti->msg); ?></li>
                         <?php endforeach; ?>
                         <li class="divider"></li>
-                        <li><a href="#"><i class="icon-ok"></i> Mark all as read</a></li>
+                        <li><a href="{{ url('notification/markallasread'); }}?_token={{ csrf_token(); }}">
+                          <i class="icon-ok"></i> Mark all as read</a></li>
                       <?php endif; ?>
                       <li><a href="#"><i class="icon-eye-open"></i> View all notifications</a></li>
                     </ul>

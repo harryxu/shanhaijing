@@ -27,6 +27,8 @@ Route::get('post/{post}/delete', 'PostController@delete');
 
 // Notification
 Route::post('notification/updates', 'NotificationController@updates');
+Route::any('notification/markallasread', array('uses' => 'NotificationController@markAllAsRead',
+    'before' => 'csrf'));
 Route::resource('notification', 'NotificationController', array('before' => 'login_required'));
 
 // User
