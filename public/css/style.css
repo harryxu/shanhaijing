@@ -30,6 +30,9 @@ textarea:focus, input[type="text"]:focus {
   font-weight: normal;
   color: #D1D1D1; }
 
+.notification-permission-request {
+  display: none; }
+
 .page-wrap {
   min-height: 100%;
   height: auto !important;

@@ -71,6 +71,15 @@
       </div>
 
       <div class="container page-content">
+        <?php if (Sentry::check()):  ?>
+        <div id="notification-permission-request" class="notification-permission-request alert alert-block fade in">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          <h4 class="alert-heading">Enable desktop notification.</h4>
+          <p>Desktop notification will notify you when their got new posts in your participated topics.</p>
+          <p> </p>
+          <button class="btn btn-primary enable" >Enable</button> <button data-dismiss="alert" class="btn">Dismiss</button>
+        </div>
+        <?php endif;  ?>
         @yield('content')
       </div>
       <div class="page-wrap-push"></div>

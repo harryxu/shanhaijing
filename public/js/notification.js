@@ -3,8 +3,21 @@
 shanhaijing.Notification = function() {
     this.checkRuning = false;
     this.checkDelay = 60 * 5 * 1000;
+    //this.checkDelay = 2000;
     this.timestamp = null;
     this.timeoutID = null;
+};
+shanhaijing.Notification.browserPermission = function() {
+    if (window.Notification && window.Notification.permission) {
+        return window.Notification.permission;
+    }
+    else if (window.webkitNotifications) {
+        var permissions = ['granted', 'default', 'denied'];
+        return permissions[window.webkitNotifications.checkPermission()];
+    }
+    else {
+        return null;
+    }
 };
 shanhaijing.Notification.prototype = {
     constructor: shanhaijing.Notification,
@@ -46,26 +59,45 @@ shanhaijing.Notification.prototype = {
     },
 
     desktopNotify: function(title, body) {
-        if (window.webkitNotifications && window.webkitNotifications.checkPermission() === 0) {
-            var popup = window.webkitNotifications.createNotification(null, title, body);
-            popup.show();
-        }
-        else if (window.Notification && window.Notification.permission) {
-            new Notification(title, {
+        if (shanhaijing.Notification.browserPermission() == 'granted') {
+            var notifiy = new window.Notification(title, {
+                iconUrl: shanhaijing.url('images/logo.png'),
                 body: body
             });
+            notifiy.onshow = function() {
+                var self = this;
+                setTimeout(function() {
+                    self.close();
+                }, 10000);
+            };
         }
     }
 };
 
 
+$(function() {
+
 // request browser desktop notification permission.
-if (window.Notification && window.Notification.permission) {
-    Notification.requestPermission(function() {  });
+if (shanhaijing.Notification.browserPermission() == 'default') {
+    var permissionRequest = $('#notification-permission-request');
+    permissionRequest.show()
+        .find('button.enable').click(function() {
+            Notification.requestPermission(function() { 
+                permissionRequest.hide();
+                new Notification(settings.sitename, {
+                    iconUrl: shanhaijing.url('images/logo.png'),
+                    body: 'This is a notification example, thanks.',
+                    onshow: function() { setTimeout(notification.close(), 5000); }
+                });
+            });
+        });
 }
 
 // start checking
 new shanhaijing.Notification().startChecking();
+
+});
+
 
 
 })(jQuery, shanhaijing.settings);
