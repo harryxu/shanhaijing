@@ -4,6 +4,7 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="<?php echo asset('favicon.ico'); ?>" type="image/x-icon" />
     <title>@section('title') 
 {{ Variable::get('sitename') }}@show</title>
     @section('vendor-styles')
