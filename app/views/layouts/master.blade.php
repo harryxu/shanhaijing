@@ -34,15 +34,15 @@
               </form>
               <div class="pull-right">
                 <ul class="nav">
-                  <?php if (Sentry::check()): $_num_noti = count($notifications); ?>
+                  <?php if (Sentry::check()): ?>
 
-                  <li class="dropdown notification num{{ $_num_noti }}">
+                  <li class="dropdown notification num{{ $notification->totalCount }}">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                      <i class="icon-bell"></i> <span>{{ $_num_noti }}</span>
+                      <i class="icon-bell"></i> <span>{{ $notification->totalCount }}</span>
                     </a>
                     <ul class="dropdown-menu">
-                      <?php if ($_num_noti > 0): ?>
-                        <?php foreach ($notifications as $noti): ?>
+                      <?php if ($notification->totalCount > 0): ?>
+                        <?php foreach ($notification->items as $noti): ?>
                           <li><?php echo link_to('notification/' . $noti->id, $noti->msg); ?></li>
                         <?php endforeach; ?>
                         <li class="divider"></li>

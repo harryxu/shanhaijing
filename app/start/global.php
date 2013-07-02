@@ -108,4 +108,10 @@ App::singleton('htmlpurifier', function()
 
 Event::listen('post.create', 'PostHander@onCreate');
 
-View::share('notifications', Sentry::check() ? Notification::userNotifications(Sentry::getUser()->id) : array());
+// Share notifications to view.
+if (Sentry::check()) {
+    $notification = new stdclass();
+    $notification->totalCount = Notification::totalCount(Sentry::getUser()->id);
+    $notification->items = Notification::userNotifications(Sentry::getUser()->id);
+    View::share('notification', $notification);
+}

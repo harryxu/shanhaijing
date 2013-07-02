@@ -14,7 +14,7 @@ class Provider {
     /**
      * Get unread notifications for user.
      */
-    public function userNotifications($user_id, $startTime = null)
+    public function userNotifications($user_id, $startTime = null, $limit = 5)
     {
         $model = $this->createModel();
         $query = $model->newQuery()->where('user_id', $user_id)
@@ -25,7 +25,18 @@ class Provider {
             $query->where('created_at' , '>=', $dt);
         }
 
-        return $query->get();
+        return $query->take($limit)->get();
+    }
+
+    /**
+     * Get total unread notification count for user.
+     */
+    public function totalCount($user_id)
+    {
+        $model = $this->createModel();
+        return $model->newQuery()->where('user_id', $user_id)
+            ->where('readed', false)
+            ->count();
     }
 
     public function markAllAsRead($user_id)
