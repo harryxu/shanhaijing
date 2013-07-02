@@ -4,7 +4,7 @@ use Illuminate\Translation\Translator as IlluminateTranslator;
 
 class Translator extends IlluminateTranslator {
 
-    protected $fallback_locale;
+    protected $fallback_locale = null;
 
     public function get($key, array $replace = array(), $locale = null)
     {
@@ -26,8 +26,9 @@ class Translator extends IlluminateTranslator {
         // that will be quick to spot in the UI if language keys are wrong or missing
         // from the application's language files. Otherwise we can return the line.
         if (is_null($line)) {
-            if (!is_null($this->getFallbackLocale()) && $locale != $this->getFallbackLocale()) {
-                return $this->get($key, $replace, $this->getFallbackLocale());
+            $fallback_locale = $this->getFallbackLocale();
+            if (!is_null($fallback_locale) && $locale != $fallback_locale) {
+                return $this->get($key, $replace, $fallback_locale);
             }
             else {
                 return $key;
