@@ -97,7 +97,6 @@ App::before(function()
 
 require app_path().'/filters.php';
 
-
 App::singleton('htmlpurifier', function()
 {
     $config = HTMLPurifier_Config::createDefault();

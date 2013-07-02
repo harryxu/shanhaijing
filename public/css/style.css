@@ -45,30 +45,43 @@ textarea:focus, input[type="text"]:focus {
   padding-top: 60px;
   margin-top: -60px; }
 
-.topic .posts {
-  margin-bottom: 20px; }
-  .topic .posts .post {
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #CCC; }
-    .topic .posts .post .avatar {
-      text-align: center; }
-    .topic .posts .post .post-header {
-      padding-bottom: 10px; }
-      .topic .posts .post .post-header .username {
-        float: left; }
-      .topic .posts .post .post-header .post-meta {
-        float: right; }
-        .topic .posts .post .post-header .post-meta .time a {
-          color: #AAAAAA;
+.topic .post {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #CCC; }
+  .topic .post.first {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0; }
+  .topic .post .avatar {
+    text-align: center; }
+  .topic .post .post-header {
+    padding-bottom: 10px; }
+    .topic .post .post-header .username {
+      float: left; }
+    .topic .post .post-header .post-meta {
+      float: right; }
+      .topic .post .post-header .post-meta .time a {
+        color: #AAAAAA;
+        text-decoration: none;
+        font-size: 0.9em; }
+        .topic .post .post-header .post-meta .time a:hover {
+          text-decoration: underline; }
+      .topic .post .post-header .post-meta .btn {
+        height: auto;
+        min-height: auto;
+        line-height: 1; }
+  .topic .post .post-footer {
+    padding-top: 5px;
+    margin-bottom: -10px; }
+    .topic .post .post-footer .tools {
+      float: right; }
+      .topic .post .post-footer .tools a {
+        color: #B6B6B6;
+        margin-left: 10px; }
+        .topic .post .post-footer .tools a:hover {
           text-decoration: none;
-          font-size: 0.9em; }
-          .topic .posts .post .post-header .post-meta .time a:hover {
-            text-decoration: underline; }
-        .topic .posts .post .post-header .post-meta .btn {
-          height: auto;
-          min-height: auto;
-          line-height: 1; }
+          color: #888888; }
 
 .topic-title-wrap {
   position: relative; }

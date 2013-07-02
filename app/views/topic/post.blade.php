@@ -29,5 +29,13 @@
       </div>
     </div>
     <?php echo filtertext($post->body); ?>
+    <div class="post-footer clearfix">
+      <div class="tools">
+        <?php if ($topic->first_post_id == $post->id):  ?>
+          <a class="auth" href="#"><i class="icon-eye-open"> @lang('misc.watch_topic')</i></a>
+        <?php endif; ?>
+        <a class="auth" href="#"><i class="icon-reply"> @lang('misc.reply')</i></a>
+      </div>
+    </div>
   </div>
 </div>
