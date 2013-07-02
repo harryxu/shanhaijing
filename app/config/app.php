@@ -54,6 +54,8 @@ return array(
 
     'locale' => 'en',
 
+    'fallback_locale' => 'en',
+
     /*
     |--------------------------------------------------------------------------
     | Encryption Key
@@ -109,7 +111,8 @@ return array(
         'Illuminate\Foundation\Providers\ServerServiceProvider',
         'Illuminate\Session\SessionServiceProvider',
         'Illuminate\Foundation\Providers\TinkerServiceProvider',
-        'Illuminate\Translation\TranslationServiceProvider',
+        //'Illuminate\Translation\TranslationServiceProvider',
+        'Shanhaijing\Translation\TranslationServiceProvider',
         'Illuminate\Validation\ValidationServiceProvider',
         'Illuminate\View\ViewServiceProvider',
         'Illuminate\Workbench\WorkbenchServiceProvider',
