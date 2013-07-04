@@ -20,6 +20,7 @@ Route::controller('account', 'AccountController');
 Route::get('t/{topic}', 'TopicController@show');
 Route::resource('topic', 'TopicController');
 Route::get('topic/{topic}/delete', 'TopicController@delete');
+Route::any('topic/{topic}/watch', array('uses' =>  'TopicController@watch', 'before' => 'csrf'));
 
 // Post
 Route::resource('post', 'PostController');

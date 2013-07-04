@@ -82,6 +82,8 @@ textarea:focus, input[type="text"]:focus {
         .topic .post .post-footer .tools a:hover {
           text-decoration: none;
           color: #888888; }
+        .topic .post .post-footer .tools a.watching {
+          color: #1A57A5; }
 
 .topic-title-wrap {
   position: relative; }

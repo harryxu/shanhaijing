@@ -26,8 +26,13 @@ class TopicController extends BaseController
      */
     public function show($topic)
     {
+        if (Sentry::check()) {
+            $topicUser = $this->getTopicUser($topic, $this->user);
+        }
+
         return View::make('topic/view', array(
             'topic' => $topic,
+            'topicUser' => isset($topicUser) ? $topicUser : new TopicUser(),
         ));
     }
 
@@ -108,6 +113,38 @@ class TopicController extends BaseController
             'title' => 'required',
         ));
         return $validator;
+    }
+
+    public function start($topic)
+    {
+        
+    }
+
+    /**
+     * Toggle topic watching for user.
+     */
+    public function watch($topic)
+    {
+        $topicUser = $this->getTopicUser($topic, $this->user);
+        if (empty($topicUser)) {
+            $topicUser = new TopicUser();
+            $topicUser->topic_id = $topic->id;
+            $topicUser->user_id = $this->user->id;
+        }
+
+        $topicUser->watching = !$topicUser->watching;
+        $topicUser->save();
+
+        return Redirect::back();
+    }
+
+    protected function getTopicUser($topic, $user)
+    {
+        $topicUser = TopicUser::where('topic_id', $topic->id)
+            ->where('user_id', $this->user->id)
+            ->first();
+
+        return $topicUser;
     }
 }
 

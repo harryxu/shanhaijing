@@ -105,6 +105,7 @@ textarea:focus, input[type="text"]:focus {
               text-decoration: none;
               color: #888888;
             };
+            &.watching { color: #1A57A5; }
           }
         }
       }
