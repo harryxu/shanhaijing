@@ -84,6 +84,8 @@ textarea:focus, input[type="text"]:focus {
           color: #888888; }
         .topic .post .post-footer .tools a.watching {
           color: #1A57A5; }
+        .topic .post .post-footer .tools a i.icon-star {
+          color: #F7C850; }
 
 .topic-title-wrap {
   position: relative; }

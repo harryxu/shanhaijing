@@ -115,9 +115,19 @@ class TopicController extends BaseController
         return $validator;
     }
 
-    public function start($topic)
+    public function star($topic)
     {
-        
+        $topicUser = $this->getTopicUser($topic, $this->user);
+        if (empty($topicUser)) {
+            $topicUser = new TopicUser();
+            $topicUser->topic_id = $topic->id;
+            $topicUser->user_id = $this->user->id;
+        }
+
+        $topicUser->starred = !$topicUser->starred;
+        $topicUser->save();
+
+        return Redirect::back();
     }
 
     /**
