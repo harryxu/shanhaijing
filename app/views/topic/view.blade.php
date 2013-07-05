@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
-@section('title')<?php echo $topic->title; ?> - @parent @stop
+@section('title')
+{{{ $topic->title }}} - @parent @stop
 
 @section('vendor-styles')
   @parent
@@ -9,22 +10,34 @@
 
 @section('content')
 <div class="topic">
-  <section>
-  <h1><?php echo $topic->title; ?></h1>
-  <div class="posts">
-      <p></p>
-    <?php foreach ($topic->posts() as $post): ?>
+  <div class="row">
+    <section class="span9">
+      <h1><?php echo $topic->title; ?></h1>
+      <?php $posts = $topic->posts(); ?>
+      <?php $post = $posts->shift();  ?>
       <div id="post-<?php echo $post->id ?>" class="row anchorfix">
-        <div class="span9 post">
+        <div class="span9 post first">
           @include('topic.post')
         </div>
       </div>
-    <?php endforeach; ?>
-  </div>
-  </section>
+    </section>
 
-  <?php if (Sentry::check()): ?> 
-  <section class="reply-form" name="reply">
+    <section class="span9">
+      <div class="posts">
+        <?php foreach ($posts as $post): ?>
+          <div id="post-<?php echo $post->id ?>" class="row anchorfix">
+            <div class="span9 post">
+              @include('topic.post')
+            </div>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </section>
+  </div>
+
+  <?php if (Sentry::check()): ?>
+  <div class="row">
+  <section class="reply-form span9" name="reply">
   <?php echo Form::open(array('url' => 'post', 'class' => 'topic-reply', 'data-validate' => 'parsley')); ?>
     <h3>Reply</h3>
     <input type="hidden" name="topic_id" value="<?php echo $topic->id; ?>" />
@@ -43,6 +56,7 @@
     <button type="submit" class="btn btn-primary">Reply</button>
   <?php echo Form::close(); ?>
   </section>
+  </div>
 
   @section('scripts')
     @parent

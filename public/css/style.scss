@@ -58,12 +58,15 @@ textarea:focus, input[type="text"]:focus {
 }
 
 .topic {
-  .posts {
-    margin-bottom: 20px;
     .post {
       margin-bottom: 15px;
       padding-bottom: 15px;
       border-bottom: 1px solid #CCC;
+      &.first { 
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
       .avatar {
         text-align: center;
       }
@@ -90,8 +93,24 @@ textarea:focus, input[type="text"]:focus {
           
         }
       }
+      .post-footer {
+        padding-top: 5px;
+        margin-bottom: -10px;
+        .tools {
+          float: right;
+          a {
+            color: #B6B6B6;
+            margin-left: 10px;
+            &:hover { 
+              text-decoration: none;
+              color: #888888;
+            };
+            &.watching i { color: #F7C850; }
+            i.icon-star { color: #F7C850; }
+          }
+        }
+      }
     }
-  }
 }
 
 .topic-title-wrap {
