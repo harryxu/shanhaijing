@@ -34,7 +34,7 @@
         <?php if ($topic->first_post_id == $post->id):  ?>
           <a class="auth" href="{{ url("topic/$topic->id/star") }}?_token={{ csrf_token() }}">
             <i class="<?php echo $topicUser->starred ? 'icon-star' : 'icon-star-empty'; ?>"></i></a>
-          <a class="auth <?php echo $topicUser->watching ? 'watching' : ''; ?>" href="{{ url("topic/$topic->id/watch") }}?_token={{ csrf_token() }}"><i class="icon-eye-open"> @lang('misc.watch_topic')</i></a>
+          <a class="auth <?php echo $topicUser->watching ? 'watching' : ''; ?>" href="{{ url("topic/$topic->id/watch") }}?_token={{ csrf_token() }}"><i class="icon-eye-open"></i> @lang('misc.watch_topic')</a>
         <?php endif; ?>
         <a class="auth " href="#"><i class="icon-reply"> @lang('misc.reply')</i></a>
       </div>
