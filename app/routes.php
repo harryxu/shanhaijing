@@ -20,8 +20,10 @@ Route::controller('account', 'AccountController');
 Route::get('t/{topic}', 'TopicController@show');
 Route::resource('topic', 'TopicController');
 Route::get('topic/{topic}/delete', 'TopicController@delete');
-Route::any('topic/{topic}/watch', array('uses' =>  'TopicController@watch', 'before' => 'csrf'));
-Route::any('topic/{topic}/star', array('uses' =>  'TopicController@star', 'before' => 'csrf'));
+Route::any('topic/{topic}/watch', array('uses' =>  'TopicController@watch', 
+                                        'before' => array('csrf', 'login_required')));
+Route::any('topic/{topic}/star', array('uses' => 'TopicController@star', 
+                                       'before' => array('csrf', 'login_required')));
 
 // Post
 Route::resource('post', 'PostController');
