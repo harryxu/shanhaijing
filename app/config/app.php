@@ -117,6 +117,8 @@ return array(
         'Illuminate\View\ViewServiceProvider',
         'Illuminate\Workbench\WorkbenchServiceProvider',
 
+        'Menu\MenuServiceProvider',
+
         'Shanhaijing\SentryExt\SentryExtServiceProvider',
         'Shanhaijing\Markdown\MarkdownServiceProvider',
         'Shanhaijing\Variable\VariableServiceProvider',
@@ -187,6 +189,7 @@ return array(
         'Validator'       => 'Illuminate\Support\Facades\Validator',
         'View'            => 'Illuminate\Support\Facades\View',
 
+        'Menu'            => 'Menu\Menu',
         'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
         'Variable'        => 'Shanhaijing\Support\Facades\Variable',
 

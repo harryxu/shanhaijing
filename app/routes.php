@@ -37,6 +37,7 @@ Route::resource('notification', 'NotificationController', array('before' => 'log
 
 // User
 Route::get('user/{username}', 'UserController@show');
+Route::get('user/{username}/starred', 'UserController@starred');
 
 // Admin
 Route::group(array('prefix' => 'admin', 'before' => 'login_required'), function()

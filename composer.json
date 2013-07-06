@@ -7,7 +7,8 @@
         "laravel/framework": "4.0.*",
         "cartalyst/sentry": "2.0.*",
         "dflydev/markdown": "dev-master",
-        "ezyang/htmlpurifier": "4.*"
+        "ezyang/htmlpurifier": "4.*",
+        "vespakoen/menu": "dev-master"
     },
     "autoload": {
         "classmap": [
