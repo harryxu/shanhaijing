@@ -1,6 +1,6 @@
 <?php
 
-use Shanhaijing\Shjsentry\Users\Eloquent\User;
+use Shanhaijing\SentryExt\Users\Eloquent\User;
 
 /**
  * Class UserAdminController 
