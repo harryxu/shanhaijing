@@ -1,6 +1,6 @@
 <?php
 
-class PostHander
+class PostHandler
 {
     function onCreate($post)
     {

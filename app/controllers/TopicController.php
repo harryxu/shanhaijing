@@ -49,7 +49,6 @@ class TopicController extends BaseController
                 ->withErrors($validator)->withInput();
         }
 
-
         $user = Sentry::getUser();
         $topic = new Topic();
         $topic->user_id = $user->id;
@@ -66,6 +65,8 @@ class TopicController extends BaseController
 
         $topic->first_post_id = $post->id;
         $topic->save();
+
+        Event::fire('topic.create', array($topic));
 
         return Redirect::to('t/'.$topic->id);
     }
@@ -115,6 +116,9 @@ class TopicController extends BaseController
         return $validator;
     }
 
+    /**
+     * Toggle topic starred for user.
+     */
     public function star($topic)
     {
         $topicUser = $this->getTopicUser($topic, $this->user);

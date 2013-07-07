@@ -105,7 +105,8 @@ App::singleton('htmlpurifier', function()
     return new HTMLPurifier($config);
 });
 
-Event::listen('post.create', 'PostHander@onCreate');
+Event::listen('post.create', 'PostHandler@onCreate');
+Event::listen('topic.create', 'TopicHandler@onCreate');
 
 // Share notifications to view.
 if (Sentry::check()) {
