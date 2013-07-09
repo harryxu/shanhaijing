@@ -86,6 +86,12 @@ textarea:focus, input[type="text"]:focus {
           color: #F7C850; }
         .topic .post .post-footer .tools a i.icon-star {
           color: #F7C850; }
+.topic .no-replies {
+  text-align: center;
+  margin-top: 20px;
+  border: 2px dashed #D8D8D8;
+  padding: 10px 0;
+  color: #ACACAC; }
 
 .topic-title-wrap {
   position: relative; }

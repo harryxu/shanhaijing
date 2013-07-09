@@ -11,7 +11,8 @@
 @section('content')
 <div class="topic">
   <div class="row">
-    <section class="span9">
+  <div class="span10">
+    <section>
       <h1><?php echo $topic->title; ?></h1>
       <?php $posts = $topic->posts(); ?>
       <?php $post = $posts->shift();  ?>
@@ -22,7 +23,8 @@
       </div>
     </section>
 
-    <section class="span9">
+  <?php if (!$posts->isEmpty()): ?>
+    <section>
       <div class="posts">
         <?php foreach ($posts as $post): ?>
           <div id="post-<?php echo $post->id ?>" class="row anchorfix">
@@ -33,29 +35,30 @@
         <?php endforeach; ?>
       </div>
     </section>
-  </div>
+  <?php else: ?>
+    <div class="no-replies">@lang('misc.no_replies')</div>
+  <?php endif; ?>
 
   <?php if (Sentry::check()): ?>
-  <div class="row">
-  <section class="reply-form span9" name="reply">
-  <?php echo Form::open(array('url' => 'post', 'class' => 'topic-reply', 'data-validate' => 'parsley')); ?>
-    <h3>Reply</h3>
-    <input type="hidden" name="topic_id" value="<?php echo $topic->id; ?>" />
-    <div class="controls">
-      <div class="wmd-panel">
-        <div id="wmd-button-bar"></div>
-        <?php echo Form::textarea('body', '', array(
-          'placeholder' => 'Type topic body here.', 
-          'class' => 'span9', 
-          'id' => 'wmd-input',
-          'data-required' => 'true',
-        )); ?>
+    <section class="reply-form" name="reply">
+    <?php echo Form::open(array('url' => 'post', 'class' => 'topic-reply', 'data-validate' => 'parsley')); ?>
+      <h3>Reply</h3>
+      <input type="hidden" name="topic_id" value="<?php echo $topic->id; ?>" />
+      <div class="controls">
+        <div class="wmd-panel">
+          <div id="wmd-button-bar"></div>
+          <?php echo Form::textarea('body', '', array(
+            'placeholder' => 'Type topic body here.', 
+            'class' => 'span9', 
+            'id' => 'wmd-input',
+            'data-required' => 'true',
+          )); ?>
+        </div>
       </div>
-    </div>
-    
-    <button type="submit" class="btn btn-primary">Reply</button>
-  <?php echo Form::close(); ?>
-  </section>
+      
+      <button type="submit" class="btn btn-primary">Reply</button>
+    <?php echo Form::close(); ?>
+    </section>
   </div>
 
   @section('scripts')
@@ -72,6 +75,7 @@
     </script>
   @stop
   <?php endif; ?>
+</div>
 </div>
 
 @stop

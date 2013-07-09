@@ -111,6 +111,14 @@ textarea:focus, input[type="text"]:focus {
         }
       }
     }
+
+    .no-replies {
+      text-align: center;
+      margin-top: 20px;
+      border: 2px dashed #D8D8D8;
+      padding: 10px 0;
+      color: #ACACAC;
+    }
 }
 
 .topic-title-wrap {
