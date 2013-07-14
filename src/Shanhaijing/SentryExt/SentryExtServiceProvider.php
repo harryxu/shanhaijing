@@ -16,12 +16,11 @@ class SentryExtServiceProvider extends SentryServiceProvider {
             // model's login attribute here. If you are manually using the
             // attribute outside of Sentry, you will need to ensure you are
             // overriding at runtime.
-            if (method_exists($model, 'setLoginAttribute'))
-            {
+            if (method_exists($model, 'setLoginAttributeName')) {
                 $loginAttribute = $app['config']['cartalyst/sentry::users.login_attribute'];
 
                 forward_static_call_array(
-                    array($model, 'setLoginAttribute'),
+                    array($model, 'setLoginAttributeName'),
                     array($loginAttribute)
                 );
             }
