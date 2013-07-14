@@ -14,13 +14,12 @@ return array(
         'Users'     => array('type' => 'dropdown', 'links' => array(
             'Manage Users' => array('route' => 'admin.users.index'),
             'Groups'       => array('route' => 'admin.groups.index'),
-            'Permissions'  => array('route' => 'admin.permissions.index')
         )),
     ),
 
     'views' => array(
 
-        'layout' => 'cpanel::layouts',
+        'layout' => 'admin.layout',
 
         'dashboard' => 'cpanel::dashboard.index',
         'login'     => 'cpanel::dashboard.login',
