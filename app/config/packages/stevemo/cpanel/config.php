@@ -11,6 +11,7 @@ return array(
     //menu 2 type are available single or dropdown and it must be a route
     'menu' => array(
         'Dashboard' => array('type' => 'single', 'route' => 'admin.home'),
+        'Settings' => array('type' => 'single', 'route' => 'admin.settings.index'),
         'Users'     => array('type' => 'dropdown', 'links' => array(
             'Manage Users' => array('route' => 'admin.users.index'),
             'Groups'       => array('route' => 'admin.groups.index'),

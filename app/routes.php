@@ -43,7 +43,9 @@ Route::get('user/{username}/starred', 'UserController@starred');
 Route::group(array('prefix' => 'admin', 'before' => 'login_required'), function()
 {
     // site settings
-    Route::controller('settings', 'SiteSettingsController');
+    Route::controller('settings', 'SiteSettingsController', array(
+        'getIndex' => 'admin.settings.index',
+    ));
 
     // user admin
     Route::get('user', array('uses' => 'UserAdminController@index',
