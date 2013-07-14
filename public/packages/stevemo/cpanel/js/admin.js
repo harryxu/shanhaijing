@@ -1,21 +1,9 @@
-$(function() {
-
-    $('a[rel=tooltip]').tooltip();
-
-        //Apply twitter bootstrap alike style to select element
-    $('.select2').select2({
-        'width':'element',
-        'placeholder' : 'Select'
-    });
-
-});
-
 /**
  * Create a confirm modal
  * We want to send an HTTP DELETE request
  *
  * @usage  <a href="posts/2" data-method="delete"
- *         	data-modal-text="Are you sure you want to delete"
+ *          data-modal-text="Are you sure you want to delete"
  *         >
  *
  *

@@ -39,6 +39,23 @@ Route::resource('notification', 'NotificationController', array('before' => 'log
 Route::get('user/{username}', 'UserController@show');
 Route::get('user/{username}/starred', 'UserController@starred');
 
+
+/**
+ * Route hack: remove some cpanel routes, so we can use our routes 
+ * and do not need change cpanel views.
+ * see:
+ *  http://api.symfony.com/2.3/Symfony/Component/Routing/RouteCollection.html#method_remove
+ */
+if (Route::getRoutes()->get('admin.groups.permissions') != null) {
+    Route::getRoutes()->remove('admin.groups.permissions');
+}
+
+// remove route that do not have a `as` name.
+// see http://laravel.com/api/source-class-Illuminate.Routing.Router.html#_getName
+if (Route::getRoutes()->get('put admin/groups/{groups}/permissions') != null) {
+    Route::getRoutes()->remove('put admin/groups/{groups}/permissions');
+}
+
 // Admin
 Route::group(array('prefix' => 'admin', 'before' => 'login_required'), function()
 {
@@ -47,13 +64,18 @@ Route::group(array('prefix' => 'admin', 'before' => 'login_required'), function(
         'getIndex' => 'admin.settings.index',
     ));
 
-    // user admin
-    Route::get('user', array('uses' => 'UserAdminController@index',
-        'before' => 'can:admin.user.list'));
-    Route::any('user/{user}/permissions', array('uses' => 'UserAdminController@permissions',
-        'before' => 'can:admin.user.permission'));
+    // Cpanel Groups Permissions Routes
+    Route::get('groups/{group}/permissions', array(
+        'as'     => 'admin.groups.permissions',
+        'uses'   => 'GroupsPermissionsController@index',
+        'before' => 'auth.cpanel:groups.update'
+    ));
 
-    Route::resource('group', 'GroupController');
+    Route::put('groups/{group}/permissions', array(
+        'uses'   => 'GroupsPermissionsController@update',
+        'before' => 'auth.cpanel:groups.update'
+    ));
+
 });
 
 

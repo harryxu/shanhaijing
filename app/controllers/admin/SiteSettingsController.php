@@ -1,6 +1,5 @@
 <?php
 
-
 class SiteSettingsController extends AdminController
 {
     public function __construct()

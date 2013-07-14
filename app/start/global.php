@@ -105,8 +105,13 @@ App::singleton('htmlpurifier', function()
     return new HTMLPurifier($config);
 });
 
+App::bind('Shanhaijing\SentryExt\Permission\PermissionProviderInterface', 
+    'Shanhaijing\SentryExt\Permission\PermissionProvider');
+
+// Event listeners
 Event::listen('post.create', 'PostHandler@onCreate');
 Event::listen('topic.create', 'TopicHandler@onCreate');
+Event::listen('permissions.all', 'PermissionHandler@onGetAll');
 
 // Share notifications to view.
 if (Sentry::check()) {

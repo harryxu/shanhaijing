@@ -117,6 +117,7 @@ return array(
         'Illuminate\View\ViewServiceProvider',
         'Illuminate\Workbench\WorkbenchServiceProvider',
 
+        // packages
         'Menu\MenuServiceProvider',
         'Former\FormerServiceProvider',
         'Stevemo\Cpanel\CpanelServiceProvider',
@@ -196,8 +197,6 @@ return array(
         'Former'          => 'Former\Facades\Former',
 
         'Variable'        => 'Shanhaijing\Support\Facades\Variable',
-
-
     ),
 
 );
