@@ -8,7 +8,8 @@
         "cartalyst/sentry": "2.0.*",
         "dflydev/markdown": "dev-master",
         "ezyang/htmlpurifier": "4.*",
-        "vespakoen/menu": "dev-master"
+        "vespakoen/menu": "dev-master",
+        "stevemo/cpanel": "dev-develop"
     },
     "autoload": {
         "classmap": [

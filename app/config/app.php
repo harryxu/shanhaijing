@@ -118,6 +118,8 @@ return array(
         'Illuminate\Workbench\WorkbenchServiceProvider',
 
         'Menu\MenuServiceProvider',
+        'Former\FormerServiceProvider',
+        'Stevemo\Cpanel\CpanelServiceProvider',
 
         'Shanhaijing\SentryExt\SentryExtServiceProvider',
         'Shanhaijing\Markdown\MarkdownServiceProvider',
@@ -191,7 +193,10 @@ return array(
 
         'Menu'            => 'Menu\Menu',
         'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
+        'Former'          => 'Former\Facades\Former',
+
         'Variable'        => 'Shanhaijing\Support\Facades\Variable',
+
 
     ),
 
