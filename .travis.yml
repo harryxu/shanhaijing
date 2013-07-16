@@ -5,8 +5,14 @@ php:
   - 5.4
   - 5.5
 
+services:
+  - mysql
+
 before_script:
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install --prefer-source --no-interaction --dev
+  - cp app/config/testing/database.php.sample app/config/testing/database.php
+  - mysql -e 'create database shj_test;'
+  - php artisan migrate --env=testing
 
 script: phpunit
