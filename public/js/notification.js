@@ -70,6 +70,10 @@ shanhaijing.Notification.prototype = {
                     self.close();
                 }, 10000);
             };
+
+            notifiy.onclick = function() {
+                window.focus();
+            };
         }
     }
 };
