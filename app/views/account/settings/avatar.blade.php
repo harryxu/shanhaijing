@@ -1,21 +1,23 @@
 @extends('account.settings.master')
 
 @section('settings-content')
-<?php echo Form::open(); ?>
-  <div ng-init="avatar_type='<?php echo $user->avatar == 'gravatar' ? 'gravatar' : 'upload'; ?>'">
+<?php echo Form::open(array('method' => 'PUT', 'files' => true)); ?>
+  <div ng-init="avatar_type='{{ $avatar_type }}'">
     <label class="radio inline">
-      <input type="radio" name="avatar-type" value="gravatar" ng-model="avatar_type" />Gravatar
+      <input type="radio" name="avatar_type" value="gravatar" ng-model="avatar_type" />Gravatar
     </label>
     <label class="radio inline">
-      <input type="radio" name="avatar-type" value="upload" ng-model="avatar_type" />@lang('misc.upload')
+      <input type="radio" name="avatar_type" value="upload" ng-model="avatar_type" />@lang('misc.upload')
     </label>
   </div>
-  <div ng-show="avatar_type == 'gravatar'">
+  <fieldset ng-show="avatar_type == 'gravatar'">
+    <legend>Gravatar</legend>
     <a href="https://gravatar.com/" target="_blank">Change your avatar at Gravatar.com.</a>
-  </div>
-  <div ng-show="avatar_type == 'upload'">
-    <input type="file" name="file-avatar" />
-  </div>
+  </fieldset>
+  <fieldset ng-show="avatar_type == 'upload'">
+    <legend>@lang('misc.upload')</legend>
+    <input type="file" name="img" />
+  </fieldset>
   <div class="form-actions">
     <button class="btn btn-primary" type="submit">@lang('misc.save')</button>
   </div>

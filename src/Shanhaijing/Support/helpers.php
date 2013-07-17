@@ -71,3 +71,24 @@ if (!function_exists('_p')) {
         echo $s;
     }
 }
+
+
+if (!function_exists('shanhaijing_files_path')) {
+    /**
+     * Get path to the files upload folder.
+     */
+    function shanhaijing_files_path()
+    {
+        return public_path() . '/files';
+    }
+}
+
+if (!function_exists('shanhaijing_avatar_path')) {
+    /**
+     * Get path to the user avatar folder.
+     */
+    function shanhaijing_avatar_path()
+    {
+        return shanhaijing_files_path() . '/avatar';
+    }
+}
