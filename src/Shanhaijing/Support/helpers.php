@@ -64,3 +64,10 @@ if (!function_exists('shanhaijing_add_js')) {
         return $js;
     }
 }
+
+if (!function_exists('_p')) {
+    function _p($s)
+    {
+        echo $s;
+    }
+}

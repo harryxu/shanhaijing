@@ -5,4 +5,5 @@ return array(
     'save' => 'Save',
     'watch_topic' => 'Watch',
     'no_replies' => 'No replies',
+    'upload' => 'upload',
 );

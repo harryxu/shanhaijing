@@ -10,6 +10,7 @@
 
 @section('content')
 <div class="topic">
+
   <div class="row">
   <div class="span10">
     <section>

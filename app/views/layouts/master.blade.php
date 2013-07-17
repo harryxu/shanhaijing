@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -103,6 +103,7 @@
       <?php if (Sentry::check()) echo HTML::script('js/notification.js'); ?>
       <?php echo HTML::script('vendor/bootstrap/js/bootstrap.min.js'); ?>
       <?php echo HTML::script('vendor/parsleyjs/parsley.js'); ?>
+      <?php echo HTML::script('vendor/angularjs/angular.min.js'); ?>
     @show
   </body>
 </html>

@@ -39,6 +39,9 @@ Route::resource('notification', 'NotificationController', array('before' => 'log
 Route::get('user/{username}', 'UserController@show');
 Route::get('user/{username}/starred', 'UserController@starred');
 
+// Account settings
+Route::controller('user/{username}/settings', 'AccountSettingsController');
+
 
 /**
  * Route hack: remove some cpanel routes, so we can use our routes 
