@@ -1,7 +1,7 @@
 <?php $topic = isset($topic) ? $topic : $post->topic; ?>
 <div class="row">
   <div class="avatar span1">
-    <img src="<?php echo $post->user->getAvatar(40); ?>" alt="" />
+    <img src="<?php echo $post->user->getAvatar('s'); ?>" alt="" />
   </div>
   <div class="body span8">
     <div class="post-header clearfix">
