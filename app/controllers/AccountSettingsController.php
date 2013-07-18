@@ -38,7 +38,7 @@ class AccountSettingsController extends BaseController
         if (Input::get('avatar_type') == 'gravatar') {
             $this->editUser->avatar = 'gravatar';
             $this->editUser->save();
-        } 
+        }
         else {
             $rules = 'mimes:jpeg,jpg,png|max:200';
             if ($this->editUser->avatar == 'gravatar') {
@@ -51,12 +51,26 @@ class AccountSettingsController extends BaseController
             }
             $filename = $this->editUser->id . '.png';
             Input::file('img')->move(shanhaijing_avatar_path(), $filename);
+            $this->generateAvatarImages($this->editUser);
 
             $this->editUser->avatar = 'upload';
             $this->editUser->save();
         }
 
         return Redirect::back();
+    }
+
+    // TODO Make this function to more common use.
+    protected function generateAvatarImages($user)
+    {
+        $styles = Config::get('shj.avatar_styles');
+        $path = shanhaijing_avatar_path();
+        foreach ($styles as $key => $value) {
+            $imagine = App::make('imagine');
+            $imagine->open($path . '/' . $user->id . '.png')
+                ->thumbnail(new Imagine\Image\Box($value, $value))
+                ->save($path . '/' . $user->id . '_' . $key . '.png');
+        }
     }
 
 }

@@ -24,7 +24,7 @@
             <div class="topic-title-wrap">
               <?php $url =  't/' . $topic->id. '#' . strtotime($topic->last_post_at); ?>
               <?php echo link_to($url, ' ', array('class' => 'topic-read-status')); ?>
-              <img src="<?php echo $topic->user->getAvatar(20); ?>" alt="" />
+              <img src="<?php echo $topic->user->getAvatar(); ?>" alt="" />
               <?php echo link_to($url, $topic->title); ?>
             </div>
           </td>

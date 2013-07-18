@@ -55,7 +55,7 @@
 
                   <li>
                     <a href="<?php echo url('user/'.Sentry::getUser()->username); ?>">
-                      <img src="<?php echo Sentry::getUser()->getAvatar(20); ?>" alt="" />
+                      <img src="<?php echo Sentry::getUser()->getAvatar(); ?>" alt="" />
                       {{{ Sentry::getUser()->username }}}
                     </a>
                   </li>

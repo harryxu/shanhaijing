@@ -4,10 +4,13 @@
 <section class="user-show">
   <div class="row user-head">
     <div class="span2">
-      <img src="{{ $user->getAvatar(128) }}" alt="" />
+      <img src="{{ $user->getAvatar('b') }}" alt="" />
     </div>
     <div class="span6">
       <span class="username">{{{ $user->username }}}</span>
+      <?php if (Sentry::check() && Sentry::getUser()->id == $user->id): ?>
+        <p>{{ link_to('user/' . $user->username. '/settings', 'Account settings') }}</p>
+      <?php endif; ?>
     </div>
   </div>
 </section>

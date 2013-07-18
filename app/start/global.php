@@ -108,6 +108,15 @@ App::singleton('htmlpurifier', function()
 App::bind('Shanhaijing\SentryExt\Permission\PermissionProviderInterface', 
     'Shanhaijing\SentryExt\Permission\PermissionProvider');
 
+App::bind('imagine', function() {
+    if (extension_loaded('imagick')) {
+        return new Imagine\Imagick\Imagine();
+    }
+    else {
+        return new Imagine\Gd\Imagine();
+    }
+});
+
 // Event listeners
 Event::listen('post.create', 'PostHandler@onCreate');
 Event::listen('topic.create', 'TopicHandler@onCreate');
