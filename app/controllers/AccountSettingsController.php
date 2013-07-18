@@ -22,6 +22,16 @@ class AccountSettingsController extends BaseController
         $this->editUser = $user;
     }
 
+    public function getIndex()
+    {
+        return View::make('account/settings/index');
+    }
+
+    public function getChangepass()
+    {
+        return View::make('account/settings/changepass');
+    }
+
     public function getAvatar()
     {
         $avatar_type = Session::has('avatar_type') ? Session::get('avatar_type') : null;
