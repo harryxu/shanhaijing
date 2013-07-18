@@ -2,6 +2,11 @@
 
 @section('settings-content')
 <?php echo Form::open(array('method' => 'PUT', 'files' => true)); ?>
+  <div>
+    <img src="{{ Sentry::getUser()->getAvatar('b') }}" alt="" />
+    <img src="{{ Sentry::getUser()->getAvatar('s') }}" alt="" />
+    <img src="{{ Sentry::getUser()->getAvatar('t') }}" alt="" />
+  </div>
   <div ng-init="avatar_type='{{ $avatar_type }}'">
     <label class="radio inline">
       <input type="radio" name="avatar_type" value="gravatar" ng-model="avatar_type" />Gravatar
