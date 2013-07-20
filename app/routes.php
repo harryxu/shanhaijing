@@ -55,8 +55,15 @@ if (Route::getRoutes()->get('admin.groups.permissions') != null) {
 
 // remove route that do not have a `as` name.
 // see http://laravel.com/api/source-class-Illuminate.Routing.Router.html#_getName
-if (Route::getRoutes()->get('put admin/groups/{groups}/permissions') != null) {
-    Route::getRoutes()->remove('put admin/groups/{groups}/permissions');
+if (route::getroutes()->get('put admin/groups/{groups}/permissions') != null) {
+    route::getroutes()->remove('put admin/groups/{groups}/permissions');
+}
+
+if (Route::getRoutes()->get('admin.users.permissions') != null) {
+    Route::getRoutes()->remove('admin.users.permissions');
+}
+if (route::getroutes()->get('put admin/users/{users}/permissions') != null) {
+    route::getroutes()->remove('put admin/users/{users}/permissions');
 }
 
 // Admin
@@ -73,10 +80,20 @@ Route::group(array('prefix' => 'admin', 'before' => 'login_required'), function(
         'uses'   => 'GroupsPermissionsController@index',
         'before' => 'auth.cpanel:groups.update'
     ));
-
     Route::put('groups/{group}/permissions', array(
         'uses'   => 'GroupsPermissionsController@update',
         'before' => 'auth.cpanel:groups.update'
+    ));
+
+    // Cpanel Users Permissions Routes
+    Route::get('users/{user}/permissions', array(
+        'as'     => 'admin.users.permissions',
+        'uses'   => 'UsersPermissionsController@index',
+        'before' => 'auth.cpanel:users.update'
+    ));
+    Route::put('users/{user}/permissions', array(
+        'uses'   => 'UsersPermissionsController@update',
+        'before' => 'auth.cpanel:users.update'
     ));
 
 });
