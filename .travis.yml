@@ -14,5 +14,6 @@ before_script:
   - cp app/config/testing/database.php.sample app/config/testing/database.php
   - mysql -e 'create database shj_test;'
   - php artisan migrate --env=testing
+  - php artisan db:seed --env=testing
 
 script: phpunit
