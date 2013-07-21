@@ -129,3 +129,9 @@ if (Sentry::check()) {
     $notification->items = Notification::userNotifications(Sentry::getUser()->id);
     View::share('notification', $notification);
 }
+
+// validation
+Validator::extend('slug', function($attribute, $value, $parameters)
+{
+    return preg_match('/^[a-z][-a-z0-9]*$/', $value);
+});

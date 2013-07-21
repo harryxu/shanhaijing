@@ -34,8 +34,7 @@
               </form>
               <div class="pull-right">
                 <ul class="nav">
-                  <?php if (Sentry::check()): ?>
-
+                <?php if (Sentry::check()): ?>
                   <li class="dropdown notification num{{ $notification->totalCount }}">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                       <i class="icon-bell"></i> <span>{{ $notification->totalCount }}</span>
@@ -60,10 +59,14 @@
                     </a>
                   </li>
                   <li><?php echo link_to('account/logout', 'Logout'); ?></li>
-                  <?php else: ?>
+                  <?php if (Sentry::getUser()->hasAccess('admin.view')): ?>
+                  <li><a href="{{ url('admin') }}" data-toggle="tooltip" title="Administration">
+                    <i class="icon-cog"></i></a></li>
+                  <?php endif;  ?>
+                <?php else: ?>
                   <li><?php echo link_to('account/login', 'Login'); ?></li>
                   <li><?php echo link_to('account/register', 'Register'); ?></li>
-                  <?php endif; ?>
+                <?php endif; ?>
                 </ul>
               </div>
             </div>

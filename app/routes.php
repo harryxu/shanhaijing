@@ -6,6 +6,7 @@ Route::model('group', 'Cartalyst\Sentry\Groups\Eloquent\Group');
 Route::model('topic', 'Topic');
 Route::model('post', 'Post');
 Route::model('notification', 'Notification');
+Route::model('category', 'Category');
 
 // All post form need csrf protection.
 Route::when('*', 'csrf', array('post', 'put'));
@@ -73,6 +74,8 @@ Route::group(array('prefix' => 'admin', 'before' => 'login_required'), function(
     Route::controller('settings', 'SiteSettingsController', array(
         'getIndex' => 'admin.settings.index',
     ));
+
+    Route::resource('category', 'CategoryAdminController');
 
     // Cpanel Groups Permissions Routes
     Route::get('groups/{group}/permissions', array(

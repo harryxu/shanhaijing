@@ -16,6 +16,7 @@ return array(
             'Manage Users' => array('route' => 'admin.users.index'),
             'Groups'       => array('route' => 'admin.groups.index'),
         )),
+        'Categories' => array('type' => 'single', 'route' => 'admin.category.index'),
     ),
 
     'views' => array(
