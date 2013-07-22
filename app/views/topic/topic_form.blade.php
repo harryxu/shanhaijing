@@ -25,8 +25,8 @@
 
     <?php 
       $data_categories = array();
-      foreach ($categories as $cate) {
-          $data_categories[$cate->id] = $cate->name;
+      foreach ($categories as $id => $cate) {
+          $data_categories[$id] = $cate->name;
       }
       echo Form::select('category_id', $data_categories, 
               isset($topic) ? $topic->category_id : 0); 
@@ -62,7 +62,7 @@
     var editor = new Markdown.Editor(converter);
     editor.run();
 
-    $('select').select2({ width: 260 });
+    //$('select').select2({ width: 260 });
   })();
   </script>
 @stop

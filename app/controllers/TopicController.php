@@ -123,8 +123,16 @@ class TopicController extends BaseController
 
     protected function validator()
     {
+        $provider = $this->categoryProvider;
+        Validator::extend('cateexist', function($attribute, $value, $parameters) use ($provider)
+        {
+            $categories = $provider->findAll();
+            return array_key_exists($value, $categories);
+        });
+
         $validator = Validator::make(Input::all(), array(
             'title' => 'required',
+            'category_id' => 'cateexist',
         ));
         return $validator;
     }
