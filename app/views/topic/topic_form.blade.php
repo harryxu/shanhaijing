@@ -62,7 +62,7 @@
     var editor = new Markdown.Editor(converter);
     editor.run();
 
-    //$('select').select2({ width: 260 });
+    $('select').select2({ width: 260 });
   })();
   </script>
 @stop
