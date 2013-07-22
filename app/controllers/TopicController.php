@@ -1,14 +1,22 @@
 <?php
 
+use Shanhaijing\Providers\CategoryProvider;
+
 /**
  * Class Topiccontroller 
  * @author 
  */
 class TopicController extends BaseController
 {
-    public function __construct()
+
+    protected $categoryProvider;
+
+    public function __construct(CategoryProvider $categoryProvider)
     {
         parent::__construct();
+
+        $this->categoryProvider = $categoryProvider;
+
         $this->beforeFilter('login_required', array('only' => array(
             'create', 'store', 'edit', 'update', 'delete', 'destroy')));
     }
@@ -38,7 +46,9 @@ class TopicController extends BaseController
 
     public function create()
     {
-        return View::make('topic/topic_form');
+        return View::make('topic/topic_form', array(
+            'categories' => $this->categoryProvider->findAll(),
+        ));
     }
 
     public function store()
@@ -54,6 +64,7 @@ class TopicController extends BaseController
         $topic->user_id = $user->id;
         $topic->title = Input::get('title');
         $topic->last_post_at = $topic->freshTimestamp();
+        $topic->category_id = Input::get('category_id');
         $topic->posts_count = 1;
         $topic->save();
 
@@ -81,6 +92,7 @@ class TopicController extends BaseController
         return View::make('topic/topic_form', array(
             'topic' => $topic,
             'post' => Post::find($topic->first_post_id),
+            'categories' => $this->categoryProvider->findAll(),
         ));
     }
 
@@ -93,6 +105,7 @@ class TopicController extends BaseController
 
         DB::transaction(function() use($topic) {
             $topic->title = Input::get('title');
+            $topic->category_id = Input::get('category_id');
             $topic->save();
 
             $post = Post::find($topic->first_post_id);

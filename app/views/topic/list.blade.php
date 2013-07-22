@@ -13,6 +13,7 @@
     <thead>
       <tr>
         <th>Topic</th>
+        <th>Category</th>
         <th>Author</th>
         <th>Posts</th>
       </tr>
@@ -28,6 +29,7 @@
               <?php echo link_to($url, $topic->title); ?>
             </div>
           </td>
+          <td><?php echo is_null($topic->category) ? 'None' : $topic->category->name; ?></td>
           <td><?php echo $topic->user->username; ?></td>
           <td><?php echo $topic->posts_count; ?></td>
         </tr>

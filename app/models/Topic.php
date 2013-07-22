@@ -16,5 +16,10 @@ class Topic extends Eloquent
             ->get();
         return $posts;
     }
+
+    public function category()
+    {
+        return $this->belongsTo('Category');
+    }
 }
 

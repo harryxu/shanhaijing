@@ -30,7 +30,7 @@ class CreateCategoriesTable extends Migration {
         // Add category_id to topics table.
         Schema::table('topics', function($table)
         {
-            $table->integer('category_id')->after('first_post_id')->nullable();
+            $table->integer('category_id')->default(0)->after('first_post_id');
             $table->index('category_id');
         });
     }
