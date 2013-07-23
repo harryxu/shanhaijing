@@ -5,9 +5,13 @@ return array(
     'action' => 'Action',
     'cancel' => 'Cancel',
     'save' => 'Save',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'upload' => 'Upload',
+
+
     'watch_topic' => 'Watch',
     'no_replies' => 'No replies',
-    'upload' => 'Upload',
 
     'categories' => 'Categories',
     'create_category' => 'New category',

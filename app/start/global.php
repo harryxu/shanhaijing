@@ -122,6 +122,7 @@ Event::listen('post.create', 'PostHandler@onCreate');
 Event::listen('topic.create', 'TopicHandler@onCreate');
 Event::listen('permissions.all', 'PermissionHandler@onGetAll');
 Event::listen('category.create', 'CategoryHandler@clearCache');
+Event::listen('category.update', 'CategoryHandler@clearCache');
 
 // Share notifications to view.
 if (Sentry::check()) {
