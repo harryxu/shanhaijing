@@ -14,7 +14,7 @@
       <div class="block-body">
         <div class="btn-toolbar">
           <a href="{{ route('admin.category.create') }}" class="btn btn-primary">
-            <i class="icon-plus"></i> @lang('create-category')
+            <i class="icon-plus"></i> @lang('misc.create_category')
           </a>
         </div>
         <table class="table table-striped">

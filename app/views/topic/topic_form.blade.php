@@ -12,16 +12,18 @@
 <?php echo Form::open(array(
   'url' => isset($topic) ? 'topic/' . $topic->id : 'topic',
   'method' => isset($topic) ? 'PUT' : 'POST',
-  'class' => 'form-horizontal',
+  'class' => 'form-horizontal topic-form',
   'data-validate' => 'parsley'
 )); ?>
   @include('inc.form_error')
-  <div class="control-group">
-    <?php echo Form::text('title', isset($topic) ? $topic->title : '', array(
-      'placeholder' => 'Type topic title here.', 
-      'class' => 'span5',
-      'data-required' => 'true'
-    )); ?>
+  <div class="control-group clearfix">
+    <div class="topic-title">
+      <?php echo Form::text('title', isset($topic) ? $topic->title : '', array(
+        'placeholder' => 'Type topic title here.', 
+        'class' => 'span5',
+        'data-required' => 'true'
+      )); ?>
+    </div>
 
     <?php 
       $data_categories = array();

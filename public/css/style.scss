@@ -135,7 +135,13 @@ textarea:focus, input[type="text"]:focus {
     &:link, &:active { background: #CFEAFF; }
     &:visited { background: #FFFFFF; }
   }
+}
 
+.topic-form {
+  .topic-title {
+    float: left;
+    margin-right: 10px;
+  }
 }
 
 .user-show {

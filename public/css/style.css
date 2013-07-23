@@ -110,6 +110,10 @@ textarea:focus, input[type="text"]:focus {
     .topic-title-wrap a.topic-read-status:visited {
       background: #FFFFFF; }
 
+.topic-form .topic-title {
+  float: left;
+  margin-right: 10px; }
+
 .user-show .user-head .username {
   font-size: 36px;
   line-height: 1; }
