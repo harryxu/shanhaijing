@@ -26,6 +26,26 @@ class TopicController extends BaseController
         $topics = Topic::orderBy('last_post_at', 'DESC')->get();
         return View::make('topic/list', array(
             'topics' => $topics,
+            'categories' => $this->categoryProvider->findAll(),
+        ));
+    }
+
+    /**
+     * List topics by category.
+     */
+    public function category($slug)
+    {
+        $category = $this->categoryProvider->findBySlug($slug);
+        if (!$category) {
+            App::abort(404);
+        }
+        $topics = Topic::where('category_id', $category->id)
+            ->orderBy('last_post_at', 'DESC')->get();
+
+        return View::make('topic/list', array(
+            'topics' => $topics,
+            'category' => $category,
+            'categories' => $this->categoryProvider->findAll(),
         ));
     }
 

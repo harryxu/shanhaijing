@@ -23,9 +23,11 @@ class CategoryAdminController extends AdminController
             return Redirect::to('admin/category/create')
                 ->withErrors($validator)->withInput();
         }
+        $user = Sentry::getUser();
         $category = new Category();
         $category->name = trim(Input::get('name'));
         $category->slug = trim(Input::get('slug'));
+        $category->user_id = $user->id;
         $category->description = Input::get('description');
         $category->save();
 

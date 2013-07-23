@@ -2,10 +2,21 @@
 
 @section('content')
 <div class="topic-list-wrapper">
-  <div class="action-links list-tools">
-    <a class="btn btn-default" href="<?php echo url('topic/create'); ?>">
-      <i class="icon-plus"></i> Create Topic
-    </a>
+  <div class="action-links list-tools clearfix">
+    <ul class="nav nav-pills categories">
+    <?php foreach($categories as $cate): ?>
+      <li class="{{ (isset($category) && $category->id == $cate->id) ? 'active' : '' }}">
+        {{ link_to('cate/' . $cate->slug, $cate->name, array()) }}</li>
+    <?php endforeach; ?>
+    </ul>
+    <div class="buttons pull-right">
+    <?php if (isset($category)): ?>
+      <a href="{{ url('/') }}" class="btn btn-default">@lang('misc.view_all_topics')</a>
+    <?php endif; ?>
+      <a class="btn btn-primary" href="{{ url('topic/create') }}">
+        <i class="icon-plus"></i> Create Topic
+      </a>
+    </div>
   </div>
 
   <section>

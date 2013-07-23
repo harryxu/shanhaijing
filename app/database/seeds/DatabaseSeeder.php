@@ -11,13 +11,12 @@ class DatabaseSeeder extends Seeder {
     {
         Eloquent::unguard();
 
-        $this->call('UserTableSeeder');
+        //$this->call('UserTableSeeder');
+        $this->call('CategoryTableSeeder');
     }
-
 }
 
 class UserTableSeeder extends Seeder {
-
     public function run()
     {
         $admin = Sentry::getUserProvider()->create(array(
@@ -29,5 +28,11 @@ class UserTableSeeder extends Seeder {
                 'superuser' => 1,
             ),
         ));
+    }
+}
+
+Class CategoryTableSeeder extends Seeder {
+    public function run()
+    {
     }
 }

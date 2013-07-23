@@ -14,6 +14,8 @@ Route::when('*', 'csrf', array('post', 'put'));
 // Site home page.
 Route::get('/', 'TopicController@index');
 
+Route::get('cate/{slug}', 'TopicController@category');
+
 // Account
 Route::controller('account', 'AccountController');
 
