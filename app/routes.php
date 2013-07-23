@@ -68,14 +68,17 @@ if (route::getroutes()->get('put admin/users/{users}/permissions') != null) {
 }
 
 // Admin
+Route::group(array('prefix' => 'admin', 'before' => 'auth.cpanel'), function()
+{
+    Route::resource('category', 'CategoryAdminController');
+});
+
 Route::group(array('prefix' => 'admin', 'before' => 'login_required'), function()
 {
     // site settings
     Route::controller('settings', 'SiteSettingsController', array(
         'getIndex' => 'admin.settings.index',
     ));
-
-    Route::resource('category', 'CategoryAdminController');
 
     // Cpanel Groups Permissions Routes
     Route::get('groups/{group}/permissions', array(
