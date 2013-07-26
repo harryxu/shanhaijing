@@ -58,6 +58,18 @@ class TopicController extends BaseController
             $topicUser = $this->getTopicUser($topic, $this->user);
         }
 
+        // TODO Make this as a ajax response, for At.js autocomplete.
+        $postedUsers = array();
+        foreach ($topic->postedUsers() as $user) {
+            $postedUsers[] = $user->toArray();
+        }
+        shanhaijing_add_js(array(
+            'topic' => array(
+                'id' => $topic->id,
+                'postedUsers' => $postedUsers,
+            ),
+        ));
+
         return View::make('topic/view', array(
             'topic' => $topic,
             'topicUser' => isset($topicUser) ? $topicUser : new TopicUser(),

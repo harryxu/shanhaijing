@@ -6,6 +6,7 @@
 @section('vendor-styles')
   @parent
   {{ HTML::style('vendor/pagedown/pagedown.css') }}
+  {{ HTML::style('vendor/At.js/css/jquery.atwho.css') }}
 @stop
 
 @section('content')
@@ -73,14 +74,24 @@
 
   @section('scripts')
     @parent
+    <?php echo HTML::script('vendor/At.js/js/jquery.atwho.min.js'); ?>
     <?php echo HTML::script('vendor/pagedown/Markdown.Converter.js'); ?>
     <?php echo HTML::script('vendor/pagedown/Markdown.Sanitizer.js'); ?>
     <?php echo HTML::script('vendor/pagedown/Markdown.Editor.js'); ?>
-    <script type="text/javascript">
+    <script>
     (function() {
       var converter = Markdown.getSanitizingConverter();
       var editor = new Markdown.Editor(converter);
       editor.run();
+
+      $(function() {
+        $('#wmd-input').atwho({
+          at: "@",
+          search_key: 'username',
+          data: shanhaijing.settings.topic.postedUsers,
+          tpl: "<li data-value='${username}'>${username} </li>"
+        });
+      });
     })();
     </script>
   @stop
