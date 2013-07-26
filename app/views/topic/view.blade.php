@@ -9,10 +9,19 @@
 @stop
 
 @section('content')
+
+
 <div class="topic">
 
   <div class="row">
   <div class="span10">
+      <ul class="breadcrumb">
+        <li>{{ link_to('/', Variable::get('sitename')) }}
+      <?php if ($topic->category): ?>
+        <span class="divider">/</span></li>
+        <li>{{ link_to('cate/' . $topic->category->slug, $topic->category->name) }}</li>
+      <?php endif; ?>
+      </ul>
     <section>
       <h1><?php echo $topic->title; ?></h1>
       <?php $posts = $topic->posts(); ?>

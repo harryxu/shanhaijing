@@ -40,7 +40,8 @@
               <?php echo link_to($url, $topic->title); ?>
             </div>
           </td>
-          <td><?php echo is_null($topic->category) ? 'None' : $topic->category->name; ?></td>
+          <td><?php echo is_null($topic->category) ? 'None' 
+                : link_to('cate/' . $topic->category->slug, $topic->category->name); ?></td>
           <td><?php echo $topic->user->username; ?></td>
           <td><?php echo $topic->posts_count; ?></td>
         </tr>

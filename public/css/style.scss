@@ -1,3 +1,5 @@
+$topoffset: 80px;
+
 html, body {
   height: 100%;
 }
@@ -47,13 +49,13 @@ textarea:focus, input[type="text"]:focus {
   margin: 0 auto -200px;
 
   .page-content {
-    padding-top: 60px;
+    padding-top: $topoffset;
   }
 }
 
 .anchorfix { 
-  padding-top: 60px;
-  margin-top: -60px;
+  padding-top: $topoffset;
+  margin-top: -$topoffset;
 }
 
 .topic-list-wrapper .list-tools {
@@ -98,7 +100,7 @@ textarea:focus, input[type="text"]:focus {
           }
           .btn {
             height: auto;
-            min-height: auto;
+            min-height: 0;
             line-height: 1;
           }
           
@@ -126,6 +128,7 @@ textarea:focus, input[type="text"]:focus {
     .no-replies {
       text-align: center;
       margin-top: 20px;
+      margin-bottom: 30px;
       border: 2px dashed #D8D8D8;
       padding: 10px 0;
       color: #ACACAC;
@@ -163,7 +166,7 @@ textarea:focus, input[type="text"]:focus {
 }
 
 section {
-  margin-top: 30px;
+  margin-bottom: 30px;
   padding-top: 30px;
   padding: 19px;
   border: 1px solid #d8d8d8;
@@ -179,7 +182,7 @@ section {
 }
 
 .action-links {
-  margin: 20px 0;
+  margin-bottom: 30px;
 }
 
 .page-wrap-push {
