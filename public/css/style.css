@@ -104,6 +104,8 @@ textarea:focus, input[type="text"]:focus {
   border: 2px dashed #D8D8D8;
   padding: 10px 0;
   color: #ACACAC; }
+.topic .reply-input-body {
+  width: 722px; }
 
 .topic-title-wrap {
   position: relative; }

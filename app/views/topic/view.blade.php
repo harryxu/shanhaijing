@@ -60,7 +60,7 @@
           <div id="wmd-button-bar"></div>
           <?php echo Form::textarea('body', '', array(
             'placeholder' => 'Type topic body here.', 
-            'class' => 'span9', 
+            'class' => 'reply-input-body', 
             'id' => 'wmd-input',
             'data-required' => 'true',
           )); ?>
