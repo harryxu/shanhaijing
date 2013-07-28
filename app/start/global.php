@@ -84,6 +84,20 @@ App::before(function()
     ), 'setting');
 });
 
+App::after(function(){
+    $now = time();
+    $lastCheckTime = Variable::get('system_cron_last', 0);
+    if ($lastCheckTime == 0 || $now - $lastCheckTime > Variable::get('system_cron_threshold', 3600)) {
+        @ignore_user_abort(TRUE);
+        // TODO Add lock to prevent fire event multiple times in concurrency situation.
+        // Notice: To avoid php execution timeout, all callback functions listen to this event should not
+        // include time consuming procedures something like http/socket connections etc..
+        Event::fire('system.cron');
+        Variable::set('system_cron_last', $now);
+        // TODO Release lock
+    }
+});
+
 /*
 |--------------------------------------------------------------------------
 | Require The Filters File
@@ -107,6 +121,8 @@ App::singleton('htmlpurifier', function()
 
 Event::listen('post.create', 'PostHandler@onCreate');
 Event::listen('topic.create', 'TopicHandler@onCreate');
+
+Event::listen('system.cron', 'MailNotifyHandler@onAggregateNotification');
 
 // Share notifications to view.
 if (Sentry::check()) {
