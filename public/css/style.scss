@@ -5,8 +5,13 @@ html, body {
 }
 
 body {
-  /*padding-top: 60px;*/
   position: relative;
+}
+
+textarea {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 textarea { padding: 8px; }
@@ -135,7 +140,8 @@ textarea:focus, input[type="text"]:focus {
     }
 
     .reply-input-body {
-      width: 722px;
+      width: 100%;
+      resize: vertical;
     }
 }
 

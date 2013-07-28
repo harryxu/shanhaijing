@@ -28,7 +28,7 @@
         <?php endif;  ?>
       </div>
     </div>
-    <?php echo filtertext($post->body); ?>
+    <?php echo $post->rendered()->renderedBody; ?>
     <div class="post-footer clearfix">
       <div class="tools">
         <?php if ($topic->first_post_id == $post->id):  ?>

@@ -2,6 +2,9 @@
 
 class PostHandler
 {
+
+    public $mentionRegex = '/(^|\s|\>)(@)(\w+)(?:\s|$)/';
+
     public function onCreate($post)
     {
         $topic = $post->topic;
@@ -36,6 +39,16 @@ class PostHandler
             // clear the postedUsers cache for the topic.
             Cache::forget('topic' . $topic->id . '.postedUsers');
         }
+    }
+
+    public function onRender($post)
+    {
+        $text = empty($post->renderedBody) ? $post->body : $post->renderedBody;
+        $text = app('htmlpurifier')->purify($text);
+        $text = app('markdown')->transformMarkdown($text);
+        $text = preg_replace($this->mentionRegex, 
+            '$1<a href="'.url('user/$3').'">$2$3</a>' , $text);
+        $post->renderedBody = $text;
     }
 }
 

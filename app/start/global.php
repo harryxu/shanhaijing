@@ -119,6 +119,7 @@ App::bind('imagine', function() {
 
 // Event listeners
 Event::listen('post.create', 'PostHandler@onCreate');
+Event::listen('post.render', 'PostHandler@onRender');
 Event::listen('topic.create', 'TopicHandler@onCreate');
 Event::listen('permissions.all', 'PermissionHandler@onGetAll');
 Event::listen('category.create', 'CategoryHandler@clearCache');
