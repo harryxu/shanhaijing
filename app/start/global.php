@@ -87,7 +87,9 @@ App::before(function()
 App::after(function(){
     $now = time();
     $lastCheckTime = Variable::get('system_cron_last', 0);
+    Log::info('Checking for cron job');
     if ($lastCheckTime == 0 || $now - $lastCheckTime > Variable::get('system_cron_threshold', 3600)) {
+        Log::info('Starting cron job');
         @ignore_user_abort(TRUE);
         // TODO Add lock to prevent fire event multiple times in concurrency situation.
         // Notice: To avoid php execution timeout, all callback functions listen to this event should not
@@ -95,6 +97,7 @@ App::after(function(){
         Event::fire('system.cron');
         Variable::set('system_cron_last', $now);
         // TODO Release lock
+        Log::info('Cron job finished');
     }
 });
 
