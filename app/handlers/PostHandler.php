@@ -3,7 +3,7 @@
 class PostHandler
 {
 
-    public $mentionRegex = '/(^|\s|\>)(@)(\w+)(?:\s|$)/';
+    public $mentionRegex = '/(^|\s|\>)(@)(\w+)(\s|\<|$)/';
 
     public function onCreate($post)
     {
@@ -46,8 +46,8 @@ class PostHandler
         $text = empty($post->renderedBody) ? $post->body : $post->renderedBody;
         $text = app('htmlpurifier')->purify($text);
         $text = app('markdown')->transformMarkdown($text);
-        $text = preg_replace($this->mentionRegex, 
-            '$1<a href="'.url('user/$3').'">$2$3</a>' , $text);
+        $text = preg_replace($this->mentionRegex,
+            '$1<a href="' . url('user/$3') . '">$2$3</a>$4', $text);
         $post->renderedBody = $text;
     }
 }
