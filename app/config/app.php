@@ -123,6 +123,7 @@ return array(
         'Shanhaijing\Markdown\MarkdownServiceProvider',
         'Shanhaijing\Variable\VariableServiceProvider',
         'Shanhaijing\Notification\NotificationServiceProvider',
+        'Shanhaijing\Lock\LockServiceProvider',
 
     ),
 
