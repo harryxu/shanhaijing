@@ -2,12 +2,18 @@
 
 class Cron
 {
-    public static function run()
+    /**
+     * @param bool If it is true, forcing to run the cron without knowing if reached pre defined cron threshold time.
+     * @return bool
+     */
+    public static function run($force = FALSE)
     {
         $now = time();
-        $lastCheckTime = Variable::get('system_cron_last', 0);
+        $lastTime = Variable::get('system_cron_last', 0);
         Log::info('Checking for cron job');
-        if ($lastCheckTime == 0 || $now - $lastCheckTime > Variable::get('system_cron_threshold', 3600)) {
+        if ( $force 
+            || $lastTime == 0
+            || $now - $lastTime > Variable::get('system_cron_threshold', 3600)) {
             @ignore_user_abort(TRUE);
             if (Lock::acquire('cron', 240.0)) {
                 Log::info('Starting cron job');
@@ -19,9 +25,11 @@ class Cron
                 Variable::set('system_cron_last', $now);
                 Lock::release('cron');
                 Log::info('Cron job finished');
+                return TRUE;
             } else {
                 Log::warning('Attempting to re-run cron while it is already running.');
             }
         }
+        return FALSE;
     }
 }
