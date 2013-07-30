@@ -1,7 +1,9 @@
 @extends('account.settings.master')
 
 @section('settings-content')
-<?php echo Form::open(array('method' => 'PUT', 'files' => true)); ?>
-  Not implemented.
-<?php echo Form::close(); ?>
+{{ Former::horizontal_open(Request::url())->method('PUT') }}
+  {{ Former::password('oldpassword', 'misc.old_password')->autofocus() }}
+  {{ Former::password('newpassword', 'misc.new_password') }}
+  {{ Former::actions(Former::primary_button('misc.submit')->type('submit')) }}
+{{ Former::close() }}
 @stop

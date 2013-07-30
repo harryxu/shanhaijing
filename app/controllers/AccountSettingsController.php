@@ -27,11 +27,40 @@ class AccountSettingsController extends BaseController
         return View::make('account/settings/index');
     }
 
+
+    /**
+     * Change password.
+     */
     public function getChangepass()
     {
         return View::make('account/settings/changepass');
     }
 
+    public function putChangepass()
+    {
+        $user = Sentry::getUser();
+        Validator::extend('userpassword', function($attribute, $value, $parameters) use ($user)
+        {
+            return $user->checkPassword($value);
+        });
+        $validator = Validator::make(input::all(), array(
+            'oldpassword' => 'required|userpassword',
+            'newpassword' => 'required',
+        ));
+
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator);
+        }
+
+        $user->password = Input::get('newpassword');
+        $user->save();
+
+        return Redirect::back();
+    }
+
+    /**
+     * Change avatar.
+     */
     public function getAvatar()
     {
         $avatar_type = Session::has('avatar_type') ? Session::get('avatar_type') : null;
