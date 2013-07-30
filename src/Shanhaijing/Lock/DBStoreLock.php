@@ -55,7 +55,7 @@ class DBStoreLock
                     // Suppress the error. If this is our first pass through the loop,
                     // then $retry is FALSE. In this case, the insert must have failed
                     // meaning some other request acquired the lock but did not release it.
-                    // We decide whether to retry by checking lock_may_be_available()
+                    // We decide whether to retry by checking may_be_available()
                     // Since this will break the lock in case it is expired.
                     $retry = $retry ? FALSE : $this->may_be_available($name);
                 }
@@ -64,7 +64,7 @@ class DBStoreLock
         return isset($this->locks[$name]);
     }
 
-    public function may_be_available($name)
+    protected function may_be_available($name)
     {
         $lock = $this->db->table($this->table)->where('name', $name)->first();
         if (!$lock) {
@@ -88,7 +88,7 @@ class DBStoreLock
     public function wait($name, $delay = 30)
     {
         // Pause the process for short periods between calling
-        // lock_may_be_available(). This prevents hitting the database with constant
+        // may_be_available(). This prevents hitting the database with constant
         // database queries while waiting, which could lead to performance issues.
         // However, if the wait period is too long, there is the potential for a
         // large number of processes to be blocked waiting for a lock, especially
