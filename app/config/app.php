@@ -198,6 +198,7 @@ return array(
         'Former'          => 'Former\Facades\Former',
 
         'Variable'        => 'Shanhaijing\Support\Facades\Variable',
+        'Lock'            => 'Shanhaijing\Support\Facades\Lock',
     ),
 
 );
