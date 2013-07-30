@@ -1,16 +1,25 @@
+$topoffset: 80px;
+
 html, body {
   height: 100%;
 }
 
 body {
-  /*padding-top: 60px;*/
   position: relative;
+}
+
+textarea {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 textarea { padding: 8px; }
 textarea:focus, input[type="text"]:focus {
   border-color: #4D90FE;
 }
+
+.nav [class^="icon-"] { line-height: 1; }
 
 .navbar-search .search-query {
   padding: 0 12px;
@@ -45,16 +54,25 @@ textarea:focus, input[type="text"]:focus {
   margin: 0 auto -200px;
 
   .page-content {
-    padding-top: 60px;
+    padding-top: $topoffset;
   }
 }
 
 .anchorfix { 
-  padding-top: 60px;
-  margin-top: -60px;
+  padding-top: $topoffset;
+  margin-top: -$topoffset;
 }
 
 .topic-list-wrapper .list-tools {
+  .categories { 
+    float: left; 
+    margin-bottom: 0;
+    a {
+      padding-left: 0;
+      padding-right: 0;
+      margin-right: 12px;
+    }
+  }
 }
 
 .topic {
@@ -87,7 +105,7 @@ textarea:focus, input[type="text"]:focus {
           }
           .btn {
             height: auto;
-            min-height: auto;
+            min-height: 0;
             line-height: 1;
           }
           
@@ -111,6 +129,20 @@ textarea:focus, input[type="text"]:focus {
         }
       }
     }
+
+    .no-replies {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 30px;
+      border: 2px dashed #D8D8D8;
+      padding: 10px 0;
+      color: #ACACAC;
+    }
+
+    .reply-input-body {
+      width: 100%;
+      resize: vertical;
+    }
 }
 
 .topic-title-wrap {
@@ -125,7 +157,13 @@ textarea:focus, input[type="text"]:focus {
     &:link, &:active { background: #CFEAFF; }
     &:visited { background: #FFFFFF; }
   }
+}
 
+.topic-form {
+  .topic-title {
+    float: left;
+    margin-right: 10px;
+  }
 }
 
 .user-show {
@@ -138,7 +176,7 @@ textarea:focus, input[type="text"]:focus {
 }
 
 section {
-  margin-top: 30px;
+  margin-bottom: 30px;
   padding-top: 30px;
   padding: 19px;
   border: 1px solid #d8d8d8;
@@ -154,7 +192,7 @@ section {
 }
 
 .action-links {
-  margin: 20px 0;
+  margin-bottom: 30px;
 }
 
 .page-wrap-push {

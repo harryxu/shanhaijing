@@ -8,12 +8,15 @@
         "cartalyst/sentry": "2.0.*",
         "dflydev/markdown": "dev-master",
         "ezyang/htmlpurifier": "4.*",
-        "vespakoen/menu": "dev-master"
+        "vespakoen/menu": "dev-master",
+        "stevemo/cpanel": "dev-develop",
+        "imagine/imagine": "~0.5.0"
     },
     "autoload": {
         "classmap": [
             "app/commands",
             "app/controllers",
+            "app/controllers/admin",
             "app/models",
             "app/database/migrations",
             "app/database/seeds",

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -8,7 +8,6 @@
     <title>@section('title') 
 {{ Variable::get('sitename') }}@show</title>
     @section('vendor-styles')
-      {{ HTML::style('vendor/bootstrap/css/bootstrap.css') }}
       {{ HTML::style('vendor/bootplus/css/bootplus.css') }}
       {{ HTML::style('vendor/font-awesome/css/font-awesome.min.css') }}
       <!--[if IE 7]>
@@ -34,8 +33,7 @@
               </form>
               <div class="pull-right">
                 <ul class="nav">
-                  <?php if (Sentry::check()): ?>
-
+                <?php if (Sentry::check()): ?>
                   <li class="dropdown notification num{{ $notification->totalCount }}">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                       <i class="icon-bell"></i> <span>{{ $notification->totalCount }}</span>
@@ -55,15 +53,19 @@
 
                   <li>
                     <a href="<?php echo url('user/'.Sentry::getUser()->username); ?>">
-                      <img src="<?php echo Sentry::getUser()->getAvatar(20); ?>" alt="" />
+                      <img src="<?php echo Sentry::getUser()->getAvatar(); ?>" alt="" />
                       {{{ Sentry::getUser()->username }}}
                     </a>
                   </li>
                   <li><?php echo link_to('account/logout', 'Logout'); ?></li>
-                  <?php else: ?>
+                  <?php if (Sentry::getUser()->hasAccess('admin.view')): ?>
+                  <li><a href="{{ url('admin') }}" data-toggle="tooltip" title="Administration">
+                    <i class="icon-cog"></i></a></li>
+                  <?php endif;  ?>
+                <?php else: ?>
                   <li><?php echo link_to('account/login', 'Login'); ?></li>
                   <li><?php echo link_to('account/register', 'Register'); ?></li>
-                  <?php endif; ?>
+                <?php endif; ?>
                 </ul>
               </div>
             </div>
@@ -103,6 +105,7 @@
       <?php if (Sentry::check()) echo HTML::script('js/notification.js'); ?>
       <?php echo HTML::script('vendor/bootstrap/js/bootstrap.min.js'); ?>
       <?php echo HTML::script('vendor/parsleyjs/parsley.js'); ?>
+      <?php echo HTML::script('vendor/angularjs/angular.min.js'); ?>
     @show
   </body>
 </html>

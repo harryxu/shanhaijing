@@ -126,8 +126,25 @@ App::singleton('htmlpurifier', function()
     return new HTMLPurifier($config);
 });
 
+App::bind('Shanhaijing\SentryExt\Permission\PermissionProviderInterface', 
+    'Shanhaijing\SentryExt\Permission\PermissionProvider');
+
+App::bind('imagine', function() {
+    if (extension_loaded('imagick')) {
+        return new Imagine\Imagick\Imagine();
+    }
+    else {
+        return new Imagine\Gd\Imagine();
+    }
+});
+
+// Event listeners
 Event::listen('post.create', 'PostHandler@onCreate');
+Event::listen('post.render', 'PostHandler@onRender');
 Event::listen('topic.create', 'TopicHandler@onCreate');
+Event::listen('permissions.all', 'PermissionHandler@onGetAll');
+Event::listen('category.create', 'CategoryHandler@clearCache');
+Event::listen('category.update', 'CategoryHandler@clearCache');
 
 Event::listen('system.cron', 'MailNotifyHandler@onAggregateNotification');
 
@@ -138,3 +155,9 @@ if (Sentry::check()) {
     $notification->items = Notification::userNotifications(Sentry::getUser()->id);
     View::share('notification', $notification);
 }
+
+// validation
+Validator::extend('slug', function($attribute, $value, $parameters)
+{
+    return preg_match('/^[a-z][-a-z0-9]*$/', $value);
+});
