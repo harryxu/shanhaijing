@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Console\Command;
-use Illuminate\Filesystem\Filesystem;
 
 class CronCommand extends Command
 {
