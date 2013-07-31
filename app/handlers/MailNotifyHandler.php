@@ -24,6 +24,8 @@ class MailNotifyHandler {
                 $data['user'] = $u;
                 $data['msg'] = $messages[$u->id];
                 $data['site_name'] = $site_name;
+
+                // TODO pick up the right email template according by notification type.
                 Mail::queue('email/notification', $data, function($message) use ($u, $site_name) {
                     $message->to($u->email, $u->username)->subject('Message from '.$site_name);
                 });
