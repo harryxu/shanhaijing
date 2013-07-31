@@ -5,7 +5,7 @@ class MailNotifyHandler {
     function onAggregateNotification()
     {
         $lastID = Variable::get('notification_email_cron', 0);
-        $results = DB::select('SELECT id, msg, user_id, type FROM notifications WHERE id > ? AND type = "post" AND readed = 0 ORDER BY id ASC LIMIT ?', array($lastID, Variable::get('notification_email_limit', 20)));
+        $results = DB::select('SELECT id, msg, user_id, type FROM notifications WHERE id > ? AND readed = 0 ORDER BY id ASC LIMIT ?', array($lastID, Variable::get('notification_email_limit', 20)));
         if (!empty($results)) {
             $len = count($results);
 
