@@ -39,7 +39,7 @@ class Post extends Eloquent
         $model = $this;
         return Cache::remember('post' . $this->id, 60*24*30, function() use ($model) {
             Event::fire('post.render', array($model));
-            return $this;
+            return $model;
         });
     }
 }
