@@ -92,3 +92,16 @@ if (!function_exists('shanhaijing_avatar_path')) {
         return shanhaijing_files_path() . '/avatar';
     }
 }
+
+if (!function_exists('shanhaijing_set_message')) {
+function shanhaijing_set_message($text, $type='info')
+{
+    $messages = Session::get('shj_messages', array());
+    $messages[] = array(
+        'text' => $text,
+        'type' => $type,
+    );
+
+    Session::flash('shj_messages', $messages);
+}
+}

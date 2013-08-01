@@ -55,6 +55,8 @@ class AccountSettingsController extends BaseController
         $user->password = Input::get('newpassword');
         $user->save();
 
+        shanhaijing_set_message(Lang::get('misc.password_change_success'), 'success');
+
         return Redirect::back();
     }
 
@@ -95,6 +97,8 @@ class AccountSettingsController extends BaseController
             $this->editUser->avatar = 'upload';
             $this->editUser->save();
         }
+
+        shanhaijing_set_message(Lang::get('misc.avatar_save_success'), 'success');
 
         return Redirect::back();
     }

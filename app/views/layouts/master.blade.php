@@ -74,6 +74,7 @@
       </div>
 
       <div class="container page-content">
+        @include('inc.alert')
         <?php if (Sentry::check()):  ?>
         <div id="notification-permission-request" class="notification-permission-request alert alert-block fade in">
           <button type="button" class="close" data-dismiss="alert">×</button>
