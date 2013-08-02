@@ -16,7 +16,7 @@ class Cron
             || $now - $lastTime > Variable::get('system_cron_threshold', 3600)) {
             @ignore_user_abort(TRUE);
             if (Lock::acquire('cron', 240.0)) {
-                @set_time_limit(240)
+                @set_time_limit(240);
                 Log::info('Starting cron job');
 
                 // Notice: To avoid php execution timeout, all callback functions listen to this event should not
