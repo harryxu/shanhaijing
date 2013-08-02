@@ -85,7 +85,8 @@ App::before(function()
     ), 'setting');
 });
 
-App::after(function(){
+App::finish(function(){
+    ob_flush();
     Cron::run();
 });
 
