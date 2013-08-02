@@ -9,13 +9,14 @@ class Cron
     public static function run($force = FALSE)
     {
         $now = time();
-        $lastTime = Variable::get('system_cron_last', 0);
+        $lastTime = Variable::get('system_cron_last', NULL);
         Log::info('Checking for cron job');
         if ( $force 
-            || $lastTime == 0
+            || !isset($lastTime)
             || $now - $lastTime > Variable::get('system_cron_threshold', 3600)) {
             @ignore_user_abort(TRUE);
             if (Lock::acquire('cron', 240.0)) {
+                @set_time_limit(240)
                 Log::info('Starting cron job');
 
                 // Notice: To avoid php execution timeout, all callback functions listen to this event should not
