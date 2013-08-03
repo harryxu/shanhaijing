@@ -19,6 +19,7 @@ ClassLoader::addDirectories(array(
     app_path().'/models',
     app_path().'/database/seeds',
     app_path().'/handlers',
+    app_path().'/common',
 ));
 
 /*
@@ -84,6 +85,11 @@ App::before(function()
     ), 'setting');
 });
 
+App::finish(function(){
+    ob_flush();
+    Cron::run();
+});
+
 /*
 |--------------------------------------------------------------------------
 | Require The Filters File
@@ -124,6 +130,8 @@ Event::listen('topic.create', 'TopicHandler@onCreate');
 Event::listen('permissions.all', 'PermissionHandler@onGetAll');
 Event::listen('category.create', 'CategoryHandler@clearCache');
 Event::listen('category.update', 'CategoryHandler@clearCache');
+
+Event::listen('system.cron', 'MailNotifyHandler@onAggregateNotification');
 
 // Share notifications to view.
 if (Sentry::check()) {

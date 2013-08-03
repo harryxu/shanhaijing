@@ -126,6 +126,7 @@ return array(
         'Shanhaijing\Markdown\MarkdownServiceProvider',
         'Shanhaijing\Variable\VariableServiceProvider',
         'Shanhaijing\Notification\NotificationServiceProvider',
+        'Shanhaijing\Lock\LockServiceProvider',
 
     ),
 
@@ -197,6 +198,7 @@ return array(
         'Former'          => 'Former\Facades\Former',
 
         'Variable'        => 'Shanhaijing\Support\Facades\Variable',
+        'Lock'            => 'Shanhaijing\Support\Facades\Lock',
     ),
 
 );
