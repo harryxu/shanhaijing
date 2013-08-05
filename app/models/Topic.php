@@ -30,7 +30,7 @@ class Topic extends Eloquent
             $users = array();
             foreach ($user_ids as $item) {
                 $users[$item->user_id] = User::find($item->user_id, array(
-                    'id', 'username', 'email',
+                    'id', 'username',
                 ));
             }
             

@@ -56,19 +56,21 @@ class TopicController extends BaseController
     {
         if (Sentry::check()) {
             $topicUser = $this->getTopicUser($topic, $this->user);
-        }
 
-        // TODO Make this as a ajax response, for At.js autocomplete.
-        $postedUsers = array();
-        foreach ($topic->postedUsers() as $user) {
-            $postedUsers[] = $user->toArray();
+            // Add posted users to javascript settings for mention in
+            // reply editor.
+            // TODO Make this as a ajax response.
+            $postedUsers = array();
+            foreach ($topic->postedUsers() as $user) {
+                $postedUsers[] = $user->toArray();
+            }
+            shanhaijing_add_js(array(
+                'topic' => array(
+                    'id' => $topic->id,
+                    'postedUsers' => $postedUsers,
+                ),
+            ));
         }
-        shanhaijing_add_js(array(
-            'topic' => array(
-                'id' => $topic->id,
-                'postedUsers' => $postedUsers,
-            ),
-        ));
 
         return View::make('topic/view', array(
             'topic' => $topic,
