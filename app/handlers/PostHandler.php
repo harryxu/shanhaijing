@@ -43,14 +43,15 @@ class PostHandler
     protected function sendMentionNotification($post, $topic)
     {
         preg_match_all($this->mentionRegex, $post->body, $matches);
-        foreach ($matches[3] as $username) {
+        $usernames = array_unique($matches[3]);
+        foreach ($usernames as $username) {
+            // Do not notify self.
+            if ($username == $post->user->username) {
+                continue;
+            }
+
             try {
                 $user = Sentry::getUserProvider()->findByUsername($username);
-
-                // Do not notify self.
-                if ($user->id == $post->user->id) {
-                    continue;
-                }
 
                 $noti = new Notification();
                 $noti->user_id = $user->id;
