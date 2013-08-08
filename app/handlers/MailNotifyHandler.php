@@ -20,14 +20,14 @@ class MailNotifyHandler {
             $users = DB::table('users')->whereIn('id', $uids)->get();
             $site_name = Variable::get('sitename', 'shanhaijing');
 
-            foreach ($users as $u) {
-                $data['user'] = $u;
-                $data['msg'] = $messages[$u->id];
+            foreach ($users as $user) {
+                $data['user'] = $user;
+                $data['msg'] = $messages[$user->id];
                 $data['site_name'] = $site_name;
 
                 // TODO pick up the right email template according by notification type.
-                Mail::queue('email/notification', $data, function($message) use ($u, $site_name) {
-                    $message->to($u->email, $u->username)->subject('Message from '.$site_name);
+                Mail::queue('email/notification', $data, function($message) use ($user, $site_name) {
+                    $message->to($user->email, $user->username)->subject('Message from '.$site_name);
                 });
             }
 

@@ -85,11 +85,6 @@ App::before(function()
     ), 'setting');
 });
 
-App::finish(function(){
-    ob_flush();
-    Cron::run();
-});
-
 /*
 |--------------------------------------------------------------------------
 | Require The Filters File
