@@ -10,7 +10,6 @@ class Cron
     {
         $now = time();
         $lastTime = Variable::get('system_cron_last', NULL);
-        Log::info('Checking for cron job');
         if ( $force 
             || !isset($lastTime)
             || $now - $lastTime > Variable::get('system_cron_threshold', 3600)) {
