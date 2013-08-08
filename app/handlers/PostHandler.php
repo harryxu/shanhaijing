@@ -1,18 +1,24 @@
 <?php
 
+use Cartalyst\Sentry\Users\UserNotFoundException;
+
 class PostHandler
 {
 
-    public $mentionRegex = '/(^|\s|\>)(@)(\w+)(\s|\<|$)/';
+    public $mentionRegex = '/(^|\s|\>)(@)(\w+)/';
 
     public function onCreate($post)
     {
         $topic = $post->topic;
-        $this->sendNotification($post, $topic);
+        $this->sendWatcherNotification($post, $topic);
+        $this->sendMentionNotification($post, $topic);
         $this->clearCache($post, $topic);
     }
 
-    protected function sendNotification($post, $topic)
+    /**
+     * Send notification to topic watchers
+     */
+    protected function sendWatcherNotification($post, $topic)
     {
         $users = TopicUser::where('topic_id', $post->topic_id)
             ->where('watching', true)
@@ -28,6 +34,35 @@ class PostHandler
             $noti->item_id = $post->id;
             $noti->msg = 'New post on ' . $topic->title;
             $noti->save();
+        }
+    }
+
+    /**
+     * Send notification to users who has been mentioned at reply.
+     */
+    protected function sendMentionNotification($post, $topic)
+    {
+        preg_match_all($this->mentionRegex, $post->body, $matches);
+        foreach ($matches[3] as $username) {
+            try {
+                $user = Sentry::getUserProvider()->findByUsername($username);
+
+                // Do not notify self.
+                if ($user->id == $post->user->id) {
+                    continue;
+                }
+
+                $noti = new Notification();
+                $noti->user_id = $user->id;
+                $noti->type = 'post';
+                $noti->item_id = $post->id;
+                $noti->msg = $post->user->username . ' mention you at topic ' . $topic->title;
+                $noti->save();
+            }
+            catch (UserNotFoundException $e) {
+                // The mention is not a exist user, no matter.
+                continue;
+            }
         }
     }
 
@@ -47,7 +82,7 @@ class PostHandler
         $text = app('htmlpurifier')->purify($text);
         $text = app('markdown')->transformMarkdown($text);
         $text = preg_replace($this->mentionRegex,
-            '$1<a href="' . url('user/$3') . '">$2$3</a>$4', $text);
+            '$1<a href="' . url('user/$3') . '">$2$3</a>', $text);
         $post->renderedBody = $text;
     }
 }
