@@ -40,7 +40,7 @@ class TopicController extends BaseController
             App::abort(404);
         }
         $topics = Topic::where('category_id', $category->id)
-            ->orderBy('last_post_at', 'DESC')->get();
+            ->orderBy('last_post_at', 'DESC')->paginate(20);
 
         return View::make('topic/list', array(
             'topics' => $topics,
