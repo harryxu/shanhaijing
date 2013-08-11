@@ -23,7 +23,7 @@ class TopicController extends BaseController
 
     public function index()
     {
-        $topics = Topic::orderBy('last_post_at', 'DESC')->get();
+        $topics = Topic::orderBy('last_post_at', 'DESC')->paginate(20);
         return View::make('topic/list', array(
             'topics' => $topics,
             'categories' => $this->categoryProvider->findAll(),

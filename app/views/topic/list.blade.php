@@ -49,6 +49,8 @@
     </tbody>
   </table>
   </section>
+
+  <?php echo $topics->links(); ?>
 </div>
 
 @stop
