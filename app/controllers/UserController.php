@@ -6,8 +6,14 @@ class UserController extends BaseController
 {
     public function show($username)
     {
+        $user = $this->getUser($username);
+        $topics = Topic::where('user_id', $user->id)
+            ->orderBy('created_at')
+            ->take(10)
+            ->get();
         return View::make('user/show', array(
-            'user' => $this->getUser($username),
+            'user' => $user,
+            'topics' => $topics,
         ));
     }
 
@@ -29,7 +35,7 @@ class UserController extends BaseController
         ));
     }
 
-    protected function getUser($username) 
+    protected function getUser($username)
     {
         try {
             $user = Sentry::getUserProvider()->findByUsername($username);
